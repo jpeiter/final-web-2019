@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "`user`")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +27,7 @@ public class User implements Serializable, UserDetails {
     private Long id;
 
     @Column(length = 100, nullable = false)
-    private String nome;
+    private String name;
 
     @Column(length = 100, nullable = false)
     private String username;
