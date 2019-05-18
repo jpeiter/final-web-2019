@@ -1,0 +1,106 @@
+/* BOOTSTRAP */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    padding-top: 5rem;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+}
+
+*:active, *:focus {
+    box-shadow: none !important;
+}
+
+.bg-brown {
+    background-color: #25201c !important;
+}
+
+.bg-brown-light {
+    background-color: #38312b !important;
+}
+
+.bg-st {
+    background-color: #ffffff9f !important;
+}
+
+.text-gold {
+    color: #FDE028 !important;
+}
+
+.text-gold-light {
+    color: #fff092 !important;
+}
+
+.text-brown {
+    color: #25201c !important;
+}
+
+.text-brown-light {
+    color: #38312b !important;
+}
+
+.border-brown {
+    border: #25201c 1px solid !important;
+    border-radius: 5px !important;
+}
+
+.border-brown-light {
+    border: #38312b 1px solid !important;
+    border-radius: 5px !important;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #FDE028 !important;
+}
+
+.btn-outline-gold {
+    color: #FDE028 !important;
+    background-color: transparent !important;
+    border-color: #FDE028 !important;
+}
+
+.btn-outline-gold:hover, .btn-outline-gold:active {
+    color: #25201c !important;
+    background-color: #38312b !important;
+    border-color: #FDE028 !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    color: #25201c !important;
+    text-decoration: none;
+    background-color: #FDE028 !important;
+}
+
+.nav-link:hover {
+    color: #fff092 !important;
+    text-decoration: none !important;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat center center;
+    background-size: 100% 100%;
+}
+
+#carouselExampleIndicators h3 {
+    background-color: #00000099 !important;
+}
+
+#carouselExampleIndicators a.confira {
+    background-color: #00000099 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+footer {
+    bottom: 0 !important;
+}

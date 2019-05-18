@@ -1,0 +1,26 @@
+.red {
+    color: #FF0000 !important;
+}
+
+.yellow {
+    color: #FDE028 !important;
+}
+
+#indep {
+    background: url('../img/ship2.jpg') no-repeat;
+    height: 500px;
+}
+
+#armas {
+    background: url('../img/guns.jpg') no-repeat;
+    height: 500px;
+}
+
+#nitens {
+    font-size: 100% !important;
+    background-color: #f00 !important;
+    color: #fff !important;
+    position: relative !important;
+    left: -15px !important;
+    top: -15px !important;
+}

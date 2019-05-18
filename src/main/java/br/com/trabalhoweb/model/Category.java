@@ -24,7 +24,7 @@ public class Category implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "description", length = 50, nullable = false)
-    @NotNull(message = "Informe a descrição da cagetoria antes de salvar.")
-    private String description;
+    @Column(name = "name", length = 50, nullable = false)
+    @NotNull(message = "Informe o nome da cagetoria antes de salvar.")
+    private String name;
 }

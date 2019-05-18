@@ -1,0 +1,39 @@
+.fa {
+    color: #FDE028 !important;
+}
+
+.big-icon {
+    font-size: 200% !important
+}
+
+.light-icon {
+    color: #fff092 !important;
+}
+
+#icon-wa:hover {
+    color: #25D366 !important;
+}
+
+#icon-fb:hover {
+    color: #3b5998 !important;
+}
+
+#icon-ig:hover {
+    color: #8a3ab9 !important
+}
+
+#icon-yt:hover {
+    color: #c4302b !important;
+}
+
+#icon-tt:hover {
+    color: #0084FF !important;
+}
+
+#icon-sc:hover {
+    color: #FFFB00 !important;
+}
+
+.starCl {
+    color: #c5b33d !important;
+}

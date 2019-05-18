@@ -1,0 +1,34 @@
+#modal-carrinho {
+    max-width: 90% !important;
+}
+
+#img-local {
+    background: url("../img/map.png") no-repeat !important;
+}
+
+.div-tipo-frete {
+    border: #ccc 1px solid !important;
+    cursor: pointer !important;
+}
+
+.frete-selecionado {
+    border-left: #007bff 3px solid !important
+}
+
+.tipo-frete {
+    border-left: transparent 3px !important
+}
+
+#btn-finalizar {
+    background-color: #28a745 !important;
+    line-height: 200% !important;
+    font-size: 150% !important;
+}
+
+#btn-finalizar:hover {
+    color: #ffffff !important;
+}
+
+#foto-produto {
+    clear: both !important;
+}
