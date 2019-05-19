@@ -12,507 +12,507 @@ INSERT INTO category (name)
 VALUES ('Diversos');
 
 INSERT INTO country (name, code)
-values ('Afeganistao', 'AFG');
+VALUES ('Afeganistao', 'AFG');
 INSERT INTO country (name, code)
-values ('Africa do Sul', 'ZAF');
+VALUES ('Africa do Sul', 'ZAF');
 INSERT INTO country (name, code)
-values ('Ilhas Alanda', 'ALA');
+VALUES ('Ilhas Alanda', 'ALA');
 INSERT INTO country (name, code)
-values ('Albania', 'ALB');
+VALUES ('Albania', 'ALB');
 INSERT INTO country (name, code)
-values ('Alemanha', 'DEU');
+VALUES ('Alemanha', 'DEU');
 INSERT INTO country (name, code)
-values ('Andorra', 'AND');
+VALUES ('Andorra', 'AND');
 INSERT INTO country (name, code)
-values ('Angola', 'AGO');
+VALUES ('Angola', 'AGO');
 INSERT INTO country (name, code)
-values ('Anguilla', 'AIA');
+VALUES ('Anguilla', 'AIA');
 INSERT INTO country (name, code)
-values ('Antarctida', 'ATA');
+VALUES ('Antarctida', 'ATA');
 INSERT INTO country (name, code)
-values ('Antigua e Barbuda', 'ATG');
+VALUES ('Antigua e Barbuda', 'ATG');
 INSERT INTO country (name, code)
-values ('Antilhas Holandesas', 'ANT');
+VALUES ('Antilhas Holandesas', 'ANT');
 INSERT INTO country (name, code)
-values ('Arabia Saudita', 'SAU');
+VALUES ('Arabia Saudita', 'SAU');
 INSERT INTO country (name, code)
-values ('Argelia', 'DZA');
+VALUES ('Argelia', 'DZA');
 INSERT INTO country (name, code)
-values ('Argentina', 'ARG');
+VALUES ('Argentina', 'ARG');
 INSERT INTO country (name, code)
-values ('Armenia', 'ARM');
+VALUES ('Armenia', 'ARM');
 INSERT INTO country (name, code)
-values ('Aruba', 'ABW');
+VALUES ('Aruba', 'ABW');
 INSERT INTO country (name, code)
-values ('Australia', 'AUS');
+VALUES ('Australia', 'AUS');
 INSERT INTO country (name, code)
-values ('Austria', 'AUT');
+VALUES ('Austria', 'AUT');
 INSERT INTO country (name, code)
-values ('Azerbaijao', 'AZE');
+VALUES ('Azerbaijao', 'AZE');
 INSERT INTO country (name, code)
-values ('Bahamas', 'BHS');
+VALUES ('Bahamas', 'BHS');
 INSERT INTO country (name, code)
-values ('Bahrein', 'BHR');
+VALUES ('Bahrein', 'BHR');
 INSERT INTO country (name, code)
-values ('Bangladesh', 'BGD');
+VALUES ('Bangladesh', 'BGD');
 INSERT INTO country (name, code)
-values ('Barbados', 'BRB');
+VALUES ('Barbados', 'BRB');
 INSERT INTO country (name, code)
-values ('Belgica', 'BEL');
+VALUES ('Belgica', 'BEL');
 INSERT INTO country (name, code)
-values ('Belize', 'BLZ');
+VALUES ('Belize', 'BLZ');
 INSERT INTO country (name, code)
-values ('Benim', 'BEN');
+VALUES ('Benim', 'BEN');
 INSERT INTO country (name, code)
-values ('Bermudas', 'BMU');
+VALUES ('Bermudas', 'BMU');
 INSERT INTO country (name, code)
-values ('Bielorrussia', 'BLR');
+VALUES ('Bielorrussia', 'BLR');
 INSERT INTO country (name, code)
-values ('Butao', 'BTN');
+VALUES ('Butao', 'BTN');
 INSERT INTO country (name, code)
-values ('Bolivia', 'BOL');
+VALUES ('Bolivia', 'BOL');
 INSERT INTO country (name, code)
-values ('Bosnia e Herzegovina', 'BIH');
+VALUES ('Bosnia e Herzegovina', 'BIH');
 INSERT INTO country (name, code)
-values ('Botsuana', 'BWA');
+VALUES ('Botsuana', 'BWA');
 INSERT INTO country (name, code)
-values ('Ilha Bouvet', 'BVT');
+VALUES ('Ilha Bouvet', 'BVT');
 INSERT INTO country (name, code)
-values ('Brasil', 'BRA');
+VALUES ('Brasil', 'BRA');
 INSERT INTO country (name, code)
-values ('Brunei', 'BRN');
+VALUES ('Brunei', 'BRN');
 INSERT INTO country (name, code)
-values ('Bulgaria', 'BGR');
+VALUES ('Bulgaria', 'BGR');
 INSERT INTO country (name, code)
-values ('Burkina Faso', 'BFA');
+VALUES ('Burkina Faso', 'BFA');
 INSERT INTO country (name, code)
-values ('Burundi', 'BDI');
+VALUES ('Burundi', 'BDI');
 INSERT INTO country (name, code)
-values ('Camboja', 'KHM');
+VALUES ('Camboja', 'KHM');
 INSERT INTO country (name, code)
-values ('Camaroes', 'CMR');
+VALUES ('Camaroes', 'CMR');
 INSERT INTO country (name, code)
-values ('Canada', 'CAN');
+VALUES ('Canada', 'CAN');
 INSERT INTO country (name, code)
-values ('Cabo Verde', 'CPV');
+VALUES ('Cabo Verde', 'CPV');
 INSERT INTO country (name, code)
-values ('Ilhas Cayman', 'CYM');
+VALUES ('Ilhas Cayman', 'CYM');
 INSERT INTO country (name, code)
-values ('Cazaquistao', 'KAZ');
+VALUES ('Cazaquistao', 'KAZ');
 INSERT INTO country (name, code)
-values ('Chade', 'TCD');
+VALUES ('Chade', 'TCD');
 INSERT INTO country (name, code)
-values ('Chile', 'CHL');
+VALUES ('Chile', 'CHL');
 INSERT INTO country (name, code)
-values ('China', 'CHN');
+VALUES ('China', 'CHN');
 INSERT INTO country (name, code)
-values ('Chipre', 'CYP');
+VALUES ('Chipre', 'CYP');
 INSERT INTO country (name, code)
-values ('Ilha Christmas', 'CXR');
+VALUES ('Ilha Christmas', 'CXR');
 INSERT INTO country (name, code)
-values ('Ilhas Cocos', 'CCK');
+VALUES ('Ilhas Cocos', 'CCK');
 INSERT INTO country (name, code)
-values ('Colombia', 'COL');
+VALUES ('Colombia', 'COL');
 INSERT INTO country (name, code)
-values ('Comores', 'COM');
+VALUES ('Comores', 'COM');
 INSERT INTO country (name, code)
-values ('Congo', 'COG');
+VALUES ('Congo', 'COG');
 INSERT INTO country (name, code)
-values ('Ilhas Cook', 'COK');
+VALUES ('Ilhas Cook', 'COK');
 INSERT INTO country (name, code)
-values ('Coreia do Norte', 'PRK');
+VALUES ('Coreia do Norte', 'PRK');
 INSERT INTO country (name, code)
-values ('Coreia do Sul', 'KOR');
+VALUES ('Coreia do Sul', 'KOR');
 INSERT INTO country (name, code)
-values ('Costa Rica', 'CRI');
+VALUES ('Costa Rica', 'CRI');
 INSERT INTO country (name, code)
-values ('Costa do Marfim', 'CIV');
+VALUES ('Costa do Marfim', 'CIV');
 INSERT INTO country (name, code)
-values ('Croacia', 'HRV');
+VALUES ('Croacia', 'HRV');
 INSERT INTO country (name, code)
-values ('Cuba', 'CUB');
+VALUES ('Cuba', 'CUB');
 INSERT INTO country (name, code)
-values ('Dinamarca', 'DNK');
+VALUES ('Dinamarca', 'DNK');
 INSERT INTO country (name, code)
-values ('Djibouti', 'DJI');
+VALUES ('Djibouti', 'DJI');
 INSERT INTO country (name, code)
-values ('Dominica', 'DMA');
+VALUES ('Dominica', 'DMA');
 INSERT INTO country (name, code)
-values ('Equador', 'ECU');
+VALUES ('Equador', 'ECU');
 INSERT INTO country (name, code)
-values ('Egito', 'EGY');
+VALUES ('Egito', 'EGY');
 INSERT INTO country (name, code)
-values ('El Salvador', 'SLV');
+VALUES ('El Salvador', 'SLV');
 INSERT INTO country (name, code)
-values ('Emirados Arabes Unidos', 'ARE');
+VALUES ('Emirados Arabes Unidos', 'ARE');
 INSERT INTO country (name, code)
-values ('Eritreia', 'ERI');
+VALUES ('Eritreia', 'ERI');
 INSERT INTO country (name, code)
-values ('Escocia', 'SCO');
+VALUES ('Escocia', 'SCO');
 INSERT INTO country (name, code)
-values ('Eslovaquia', 'SVK');
+VALUES ('Eslovaquia', 'SVK');
 INSERT INTO country (name, code)
-values ('Eslovenia', 'SVN');
+VALUES ('Eslovenia', 'SVN');
 INSERT INTO country (name, code)
-values ('Espanha', 'ESP');
+VALUES ('Espanha', 'ESP');
 INSERT INTO country (name, code)
-values ('Estados Unidos', 'USA');
+VALUES ('Estados Unidos', 'USA');
 INSERT INTO country (name, code)
-values ('Ilhas Menores Distantes dos Estados Unidos', 'UMI');
+VALUES ('Ilhas Menores Distantes dos Estados Unidos', 'UMI');
 INSERT INTO country (name, code)
-values ('Estonia', 'EST');
+VALUES ('Estonia', 'EST');
 INSERT INTO country (name, code)
-values ('Etiopia', 'ETH');
+VALUES ('Etiopia', 'ETH');
 INSERT INTO country (name, code)
-values ('Ilhas Feroe', 'FRO');
+VALUES ('Ilhas Feroe', 'FRO');
 INSERT INTO country (name, code)
-values ('Fiji', 'FJI');
+VALUES ('Fiji', 'FJI');
 INSERT INTO country (name, code)
-values ('Filipinas', 'PHL');
+VALUES ('Filipinas', 'PHL');
 INSERT INTO country (name, code)
-values ('Finlandia', 'FIN');
+VALUES ('Finlandia', 'FIN');
 INSERT INTO country (name, code)
-values ('Franca', 'FRA');
+VALUES ('Franca', 'FRA');
 INSERT INTO country (name, code)
-values ('Terras Austrais e Antarticas Francesas', 'ATF');
+VALUES ('Terras Austrais e Antarticas Francesas', 'ATF');
 INSERT INTO country (name, code)
-values ('Gabao', 'GAB');
+VALUES ('Gabao', 'GAB');
 INSERT INTO country (name, code)
-values ('Gana', 'GHA');
+VALUES ('Gana', 'GHA');
 INSERT INTO country (name, code)
-values ('Gambia', 'GMB');
+VALUES ('Gambia', 'GMB');
 INSERT INTO country (name, code)
-values ('Georgia', 'GEO');
+VALUES ('Georgia', 'GEO');
 INSERT INTO country (name, code)
-values ('Ilhas Georgia do Sul e Sandwich do Sul', 'SGS');
+VALUES ('Ilhas Georgia do Sul e Sandwich do Sul', 'SGS');
 INSERT INTO country (name, code)
-values ('Gibraltar', 'GIB');
+VALUES ('Gibraltar', 'GIB');
 INSERT INTO country (name, code)
-values ('Granada', 'GRD');
+VALUES ('Granada', 'GRD');
 INSERT INTO country (name, code)
-values ('Grecia', 'GRC');
+VALUES ('Grecia', 'GRC');
 INSERT INTO country (name, code)
-values ('Gronelandia', 'GRL');
+VALUES ('Gronelandia', 'GRL');
 INSERT INTO country (name, code)
-values ('Guadalupe', 'GLP');
+VALUES ('Guadalupe', 'GLP');
 INSERT INTO country (name, code)
-values ('Guam', 'GUM');
+VALUES ('Guam', 'GUM');
 INSERT INTO country (name, code)
-values ('Guatemala', 'GTM');
+VALUES ('Guatemala', 'GTM');
 INSERT INTO country (name, code)
-values ('Guernsey', 'GGY');
+VALUES ('Guernsey', 'GGY');
 INSERT INTO country (name, code)
-values ('Guine', 'GIN');
+VALUES ('Guine', 'GIN');
 INSERT INTO country (name, code)
-values ('Guine-Bissau', 'GNB');
+VALUES ('Guine-Bissau', 'GNB');
 INSERT INTO country (name, code)
-values ('Guine Equatorial', 'GNQ');
+VALUES ('Guine Equatorial', 'GNQ');
 INSERT INTO country (name, code)
-values ('Guiana', 'GUY');
+VALUES ('Guiana', 'GUY');
 INSERT INTO country (name, code)
-values ('Guiana Francesa', 'GUF');
+VALUES ('Guiana Francesa', 'GUF');
 INSERT INTO country (name, code)
-values ('Haiti', 'HTI');
+VALUES ('Haiti', 'HTI');
 INSERT INTO country (name, code)
-values ('Ilha Heard e Ilhas McDonald', 'HMD');
+VALUES ('Ilha Heard e Ilhas McDonald', 'HMD');
 INSERT INTO country (name, code)
-values ('Honduras', 'HND');
+VALUES ('Honduras', 'HND');
 INSERT INTO country (name, code)
-values ('Hong Kong', 'HKG');
+VALUES ('Hong Kong', 'HKG');
 INSERT INTO country (name, code)
-values ('Hungria', 'HUN');
+VALUES ('Hungria', 'HUN');
 INSERT INTO country (name, code)
-values ('Iemen', 'YEM');
+VALUES ('Iemen', 'YEM');
 INSERT INTO country (name, code)
-values ('India', 'IND');
+VALUES ('India', 'IND');
 INSERT INTO country (name, code)
-values ('Indonesia', 'IDN');
+VALUES ('Indonesia', 'IDN');
 INSERT INTO country (name, code)
-values ('Inglaterra', 'ENG');
+VALUES ('Inglaterra', 'ENG');
 INSERT INTO country (name, code)
-values ('Ira', 'IRN');
+VALUES ('Ira', 'IRN');
 INSERT INTO country (name, code)
-values ('Iraque', 'IRQ');
+VALUES ('Iraque', 'IRQ');
 INSERT INTO country (name, code)
-values ('Irlanda', 'IRL');
+VALUES ('Irlanda', 'IRL');
 INSERT INTO country (name, code)
-values ('Irlanda do Norte', 'NIR');
+VALUES ('Irlanda do Norte', 'NIR');
 INSERT INTO country (name, code)
-values ('Ilha de Man', 'IMN');
+VALUES ('Ilha de Man', 'IMN');
 INSERT INTO country (name, code)
-values ('Islandia', 'ISL');
+VALUES ('Islandia', 'ISL');
 INSERT INTO country (name, code)
-values ('Israel', 'ISR');
+VALUES ('Israel', 'ISR');
 INSERT INTO country (name, code)
-values ('Italia', 'ITA');
+VALUES ('Italia', 'ITA');
 INSERT INTO country (name, code)
-values ('Jamaica', 'JAM');
+VALUES ('Jamaica', 'JAM');
 INSERT INTO country (name, code)
-values ('Japao', 'JPN');
+VALUES ('Japao', 'JPN');
 INSERT INTO country (name, code)
-values ('Jersey', 'JEY');
+VALUES ('Jersey', 'JEY');
 INSERT INTO country (name, code)
-values ('Jordania', 'JOR');
+VALUES ('Jordania', 'JOR');
 INSERT INTO country (name, code)
-values ('Kiribati', 'KIR');
+VALUES ('Kiribati', 'KIR');
 INSERT INTO country (name, code)
-values ('Kosovo', 'KOS');
+VALUES ('Kosovo', 'KOS');
 INSERT INTO country (name, code)
-values ('Kuwait', 'KWT');
+VALUES ('Kuwait', 'KWT');
 INSERT INTO country (name, code)
-values ('Laos', 'LAO');
+VALUES ('Laos', 'LAO');
 INSERT INTO country (name, code)
-values ('Letonia', 'LVA');
+VALUES ('Letonia', 'LVA');
 INSERT INTO country (name, code)
-values ('Lesoto', 'LSO');
+VALUES ('Lesoto', 'LSO');
 INSERT INTO country (name, code)
-values ('Libano', 'LBN');
+VALUES ('Libano', 'LBN');
 INSERT INTO country (name, code)
-values ('Liberia', 'LBR');
+VALUES ('Liberia', 'LBR');
 INSERT INTO country (name, code)
-values ('Libia', 'LBY');
+VALUES ('Libia', 'LBY');
 INSERT INTO country (name, code)
-values ('Liechtenstein', 'LIE');
+VALUES ('Liechtenstein', 'LIE');
 INSERT INTO country (name, code)
-values ('Lituania', 'LTU');
+VALUES ('Lituania', 'LTU');
 INSERT INTO country (name, code)
-values ('Luxemburgo', 'LUX');
+VALUES ('Luxemburgo', 'LUX');
 INSERT INTO country (name, code)
-values ('Macau', 'MAC');
+VALUES ('Macau', 'MAC');
 INSERT INTO country (name, code)
-values ('Macedonia', 'MKD');
+VALUES ('Macedonia', 'MKD');
 INSERT INTO country (name, code)
-values ('Madagascar', 'MDG');
+VALUES ('Madagascar', 'MDG');
 INSERT INTO country (name, code)
-values ('Malasia', 'MYS');
+VALUES ('Malasia', 'MYS');
 INSERT INTO country (name, code)
-values ('Malaui', 'MWI');
+VALUES ('Malaui', 'MWI');
 INSERT INTO country (name, code)
-values ('Maldivas', 'MDV');
+VALUES ('Maldivas', 'MDV');
 INSERT INTO country (name, code)
-values ('Mali', 'MLI');
+VALUES ('Mali', 'MLI');
 INSERT INTO country (name, code)
-values ('Malta', 'MLT');
+VALUES ('Malta', 'MLT');
 INSERT INTO country (name, code)
-values ('Ilhas Malvinas', 'FLK');
+VALUES ('Ilhas Malvinas', 'FLK');
 INSERT INTO country (name, code)
-values ('Ilhas Marshall', 'MHL');
+VALUES ('Ilhas Marshall', 'MHL');
 INSERT INTO country (name, code)
-values ('Marianas Setentrionais', 'MNP');
+VALUES ('Marianas Setentrionais', 'MNP');
 INSERT INTO country (name, code)
-values ('Marrocos', 'MAR');
+VALUES ('Marrocos', 'MAR');
 INSERT INTO country (name, code)
-values ('Martinica', 'MTQ');
+VALUES ('Martinica', 'MTQ');
 INSERT INTO country (name, code)
-values ('Mauritania', 'MRT');
+VALUES ('Mauritania', 'MRT');
 INSERT INTO country (name, code)
-values ('Mauricia', 'MUS');
+VALUES ('Mauricia', 'MUS');
 INSERT INTO country (name, code)
-values ('Mayotte', 'MYT');
+VALUES ('Mayotte', 'MYT');
 INSERT INTO country (name, code)
-values ('Mexico', 'MEX');
+VALUES ('Mexico', 'MEX');
 INSERT INTO country (name, code)
-values ('Mianmar', 'MMR');
+VALUES ('Mianmar', 'MMR');
 INSERT INTO country (name, code)
-values ('Estados Federados da Micronesia', 'FSM');
+VALUES ('Estados Federados da Micronesia', 'FSM');
 INSERT INTO country (name, code)
-values ('Moldavia', 'MDA');
+VALUES ('Moldavia', 'MDA');
 INSERT INTO country (name, code)
-values ('Monaco', 'MCO');
+VALUES ('Monaco', 'MCO');
 INSERT INTO country (name, code)
-values ('Mongolia', 'MNG');
+VALUES ('Mongolia', 'MNG');
 INSERT INTO country (name, code)
-values ('Montenegro', 'MNE');
+VALUES ('Montenegro', 'MNE');
 INSERT INTO country (name, code)
-values ('Montserrat', 'MSR');
+VALUES ('Montserrat', 'MSR');
 INSERT INTO country (name, code)
-values ('Mocambique', 'MOZ');
+VALUES ('Mocambique', 'MOZ');
 INSERT INTO country (name, code)
-values ('Namibia', 'NAM');
+VALUES ('Namibia', 'NAM');
 INSERT INTO country (name, code)
-values ('Nauru', 'NRU');
+VALUES ('Nauru', 'NRU');
 INSERT INTO country (name, code)
-values ('Nepal', 'NPL');
+VALUES ('Nepal', 'NPL');
 INSERT INTO country (name, code)
-values ('Nova Caledonia', 'NCL');
+VALUES ('Nova Caledonia', 'NCL');
 INSERT INTO country (name, code)
-values ('Nova Zelandia', 'NZL');
+VALUES ('Nova Zelandia', 'NZL');
 INSERT INTO country (name, code)
-values ('Nicaragua', 'NIC');
+VALUES ('Nicaragua', 'NIC');
 INSERT INTO country (name, code)
-values ('Niger', 'NER');
+VALUES ('Niger', 'NER');
 INSERT INTO country (name, code)
-values ('Nigeria', 'NGA');
+VALUES ('Nigeria', 'NGA');
 INSERT INTO country (name, code)
-values ('Niue', 'NIU');
+VALUES ('Niue', 'NIU');
 INSERT INTO country (name, code)
-values ('Ilha Norfolk', 'NFK');
+VALUES ('Ilha Norfolk', 'NFK');
 INSERT INTO country (name, code)
-values ('Noruega', 'NOR');
+VALUES ('Noruega', 'NOR');
 INSERT INTO country (name, code)
-values ('Oma', 'OMN');
+VALUES ('Oma', 'OMN');
 INSERT INTO country (name, code)
-values ('Pais de Gales', 'WAL');
+VALUES ('Pais de Gales', 'WAL');
 INSERT INTO country (name, code)
-values ('Paises Baixos', 'NLD');
+VALUES ('Paises Baixos', 'NLD');
 INSERT INTO country (name, code)
-values ('Palau', 'PLW');
+VALUES ('Palau', 'PLW');
 INSERT INTO country (name, code)
-values ('Palestina', 'PSE');
+VALUES ('Palestina', 'PSE');
 INSERT INTO country (name, code)
-values ('Panama', 'PAN');
+VALUES ('Panama', 'PAN');
 INSERT INTO country (name, code)
-values ('Papua-Nova Guine', 'PNG');
+VALUES ('Papua-Nova Guine', 'PNG');
 INSERT INTO country (name, code)
-values ('Paquistao', 'PAK');
+VALUES ('Paquistao', 'PAK');
 INSERT INTO country (name, code)
-values ('Paraguai', 'PRY');
+VALUES ('Paraguai', 'PRY');
 INSERT INTO country (name, code)
-values ('Peru', 'PER');
+VALUES ('Peru', 'PER');
 INSERT INTO country (name, code)
-values ('Pitcairn', 'PCN');
+VALUES ('Pitcairn', 'PCN');
 INSERT INTO country (name, code)
-values ('Polinesia Francesa', 'PYF');
+VALUES ('Polinesia Francesa', 'PYF');
 INSERT INTO country (name, code)
-values ('Polonia', 'POL');
+VALUES ('Polonia', 'POL');
 INSERT INTO country (name, code)
-values ('Portugal', 'PRT');
+VALUES ('Portugal', 'PRT');
 INSERT INTO country (name, code)
-values ('Porto Rico', 'PRI');
+VALUES ('Porto Rico', 'PRI');
 INSERT INTO country (name, code)
-values ('Qatar', 'QAT');
+VALUES ('Qatar', 'QAT');
 INSERT INTO country (name, code)
-values ('Quenia', 'KEN');
+VALUES ('Quenia', 'KEN');
 INSERT INTO country (name, code)
-values ('Quirguistao', 'KGZ');
+VALUES ('Quirguistao', 'KGZ');
 INSERT INTO country (name, code)
-values ('Reino Unido', 'GBR');
+VALUES ('Reino Unido', 'GBR');
 INSERT INTO country (name, code)
-values ('Territorio Britanico do Oceano Indico', 'IOT');
+VALUES ('Territorio Britanico do Oceano Indico', 'IOT');
 INSERT INTO country (name, code)
-values ('Ilhas Virgens Britanicas', 'VGB');
+VALUES ('Ilhas Virgens Britanicas', 'VGB');
 INSERT INTO country (name, code)
-values ('Republica Centro-Africana', 'CAF');
+VALUES ('Republica Centro-Africana', 'CAF');
 INSERT INTO country (name, code)
-values ('Republica Checa', 'CZE');
+VALUES ('Republica Checa', 'CZE');
 INSERT INTO country (name, code)
-values ('Republica Democratica do Congo', 'COD');
+VALUES ('Republica Democratica do Congo', 'COD');
 INSERT INTO country (name, code)
-values ('Republica Dominicana', 'DOM');
+VALUES ('Republica Dominicana', 'DOM');
 INSERT INTO country (name, code)
-values ('Taiwan', 'TWN');
+VALUES ('Taiwan', 'TWN');
 INSERT INTO country (name, code)
-values ('Reuniao', 'REU');
+VALUES ('Reuniao', 'REU');
 INSERT INTO country (name, code)
-values ('Romenia', 'ROU');
+VALUES ('Romenia', 'ROU');
 INSERT INTO country (name, code)
-values ('Russia', 'RUS');
+VALUES ('Russia', 'RUS');
 INSERT INTO country (name, code)
-values ('Ruanda', 'RWA');
+VALUES ('Ruanda', 'RWA');
 INSERT INTO country (name, code)
-values ('Saara Ocidental', 'ESH');
+VALUES ('Saara Ocidental', 'ESH');
 INSERT INTO country (name, code)
-values ('Ilhas Salomao', 'SLB');
+VALUES ('Ilhas Salomao', 'SLB');
 INSERT INTO country (name, code)
-values ('Samoa', 'WSM');
+VALUES ('Samoa', 'WSM');
 INSERT INTO country (name, code)
-values ('Samoa Americana', 'ASM');
+VALUES ('Samoa Americana', 'ASM');
 INSERT INTO country (name, code)
-values ('Saint-Barthelemy', 'BLM');
+VALUES ('Saint-Barthelemy', 'BLM');
 INSERT INTO country (name, code)
-values ('Santa Helena (territorio)', 'SHN');
+VALUES ('Santa Helena (territorio)', 'SHN');
 INSERT INTO country (name, code)
-values ('Santa Lucia', 'LCA');
+VALUES ('Santa Lucia', 'LCA');
 INSERT INTO country (name, code)
-values ('Saint Martin', 'MAF');
+VALUES ('Saint Martin', 'MAF');
 INSERT INTO country (name, code)
-values ('Sao Cristovao e Nevis', 'KNA');
+VALUES ('Sao Cristovao e Nevis', 'KNA');
 INSERT INTO country (name, code)
-values ('Sao Pedro e Miquelao', 'SPM');
+VALUES ('Sao Pedro e Miquelao', 'SPM');
 INSERT INTO country (name, code)
-values ('Sao Vicente e Granadinas', 'VCT');
+VALUES ('Sao Vicente e Granadinas', 'VCT');
 INSERT INTO country (name, code)
-values ('Sao Marinho', 'SMR');
+VALUES ('Sao Marinho', 'SMR');
 INSERT INTO country (name, code)
-values ('Sao Tome e Principe', 'STP');
+VALUES ('Sao Tome e Principe', 'STP');
 INSERT INTO country (name, code)
-values ('Senegal', 'SEN');
+VALUES ('Senegal', 'SEN');
 INSERT INTO country (name, code)
-values ('Serra Leoa', 'SLE');
+VALUES ('Serra Leoa', 'SLE');
 INSERT INTO country (name, code)
-values ('Servia', 'SRB');
+VALUES ('Servia', 'SRB');
 INSERT INTO country (name, code)
-values ('Seychelles', 'SYC');
+VALUES ('Seychelles', 'SYC');
 INSERT INTO country (name, code)
-values ('Singapura', 'SGP');
+VALUES ('Singapura', 'SGP');
 INSERT INTO country (name, code)
-values ('Siria', 'SYR');
+VALUES ('Siria', 'SYR');
 INSERT INTO country (name, code)
-values ('Somalia', 'SOM');
+VALUES ('Somalia', 'SOM');
 INSERT INTO country (name, code)
-values ('Sri Lanka', 'LKA');
+VALUES ('Sri Lanka', 'LKA');
 INSERT INTO country (name, code)
-values ('Sudao', 'SDN');
+VALUES ('Sudao', 'SDN');
 INSERT INTO country (name, code)
-values ('Suecia', 'SWE');
+VALUES ('Suecia', 'SWE');
 INSERT INTO country (name, code)
-values ('Suazilandia', 'SWZ');
+VALUES ('Suazilandia', 'SWZ');
 INSERT INTO country (name, code)
-values ('Suica', 'CHE');
+VALUES ('Suica', 'CHE');
 INSERT INTO country (name, code)
-values ('Suriname', 'SUR');
+VALUES ('Suriname', 'SUR');
 INSERT INTO country (name, code)
-values ('Svalbard', 'SJM');
+VALUES ('Svalbard', 'SJM');
 INSERT INTO country (name, code)
-values ('Tadjiquistao', 'TJK');
+VALUES ('Tadjiquistao', 'TJK');
 INSERT INTO country (name, code)
-values ('Tailandia', 'THA');
+VALUES ('Tailandia', 'THA');
 INSERT INTO country (name, code)
-values ('Tanzania', 'TZA');
+VALUES ('Tanzania', 'TZA');
 INSERT INTO country (name, code)
-values ('Timor-Leste', 'TLS');
+VALUES ('Timor-Leste', 'TLS');
 INSERT INTO country (name, code)
-values ('Togo', 'TGO');
+VALUES ('Togo', 'TGO');
 INSERT INTO country (name, code)
-values ('Toquelau', 'TKL');
+VALUES ('Toquelau', 'TKL');
 INSERT INTO country (name, code)
-values ('Tonga', 'TON');
+VALUES ('Tonga', 'TON');
 INSERT INTO country (name, code)
-values ('Trinidad e Tobago', 'TTO');
+VALUES ('Trinidad e Tobago', 'TTO');
 INSERT INTO country (name, code)
-values ('Tunisia', 'TUN');
+VALUES ('Tunisia', 'TUN');
 INSERT INTO country (name, code)
-values ('Turcomenistao', 'TKM');
+VALUES ('Turcomenistao', 'TKM');
 INSERT INTO country (name, code)
-values ('Turquia', 'TUR');
+VALUES ('Turquia', 'TUR');
 INSERT INTO country (name, code)
-values ('Turcas e Caicos', 'TCA');
+VALUES ('Turcas e Caicos', 'TCA');
 INSERT INTO country (name, code)
-values ('Tuvalu', 'TUV');
+VALUES ('Tuvalu', 'TUV');
 INSERT INTO country (name, code)
-values ('Ucrania', 'UKR');
+VALUES ('Ucrania', 'UKR');
 INSERT INTO country (name, code)
-values ('Uganda', 'UGA');
+VALUES ('Uganda', 'UGA');
 INSERT INTO country (name, code)
-values ('Ilhas Virgens Americanas', 'VIR');
+VALUES ('Ilhas Virgens Americanas', 'VIR');
 INSERT INTO country (name, code)
-values ('Uruguai', 'URY');
+VALUES ('Uruguai', 'URY');
 INSERT INTO country (name, code)
-values ('Uzbequistao', 'UZB');
+VALUES ('Uzbequistao', 'UZB');
 INSERT INTO country (name, code)
-values ('Vanuatu', 'VUT');
+VALUES ('Vanuatu', 'VUT');
 INSERT INTO country (name, code)
-values ('Vaticano', 'VAT');
+VALUES ('Vaticano', 'VAT');
 INSERT INTO country (name, code)
-values ('Venezuela', 'VEN');
+VALUES ('Venezuela', 'VEN');
 INSERT INTO country (name, code)
-values ('Vietname', 'VNM');
+VALUES ('Vietname', 'VNM');
 INSERT INTO country (name, code)
-values ('Wallis e Futuna', 'WLF');
+VALUES ('Wallis e Futuna', 'WLF');
 INSERT INTO country (name, code)
-values ('Zambia', 'ZMB');
+VALUES ('Zambia', 'ZMB');
 INSERT INTO country (name, code)
-values ('Zimbabue', 'ZWE');
+VALUES ('Zimbabue', 'ZWE');
 
 INSERT INTO "user" (name, username, password)
 VALUES ('Administrador', 'admin', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
@@ -520,9 +520,9 @@ INSERT INTO "user" (name, username, password)
 VALUES ('Teste', 'teste', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
 
 INSERT INTO "role" (name)
-values ('ROLE_ADMIN');
+VALUES ('ROLE_ADMIN');
 INSERT INTO "role" (name)
-values ('ROLE_USER');
+VALUES ('ROLE_USER');
 
 
 INSERT INTO user_roles (user_id, roles_id)
