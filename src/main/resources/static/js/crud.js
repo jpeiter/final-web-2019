@@ -62,3 +62,12 @@ function edit(url) {
     });
     $('#modal-form').modal();
 }
+
+function editBrand(url) {
+    $.get(url, function (entity, status) {
+        $('#id').val(entity.id);
+        $('#name').val(entity.name);
+        $('#country').val(entity.country.id);
+    });
+    $('#modal-form').modal();
+}

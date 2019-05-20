@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default-layout}">
 <head>
-    <title layout:fragment="title">Ahoy! | Categorias</title>
+    <title layout:fragment="title">Ahoy! | Marcas</title>
 </head>
 <body>
 <section layout:fragment="conteudo">
@@ -12,13 +12,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-8">
-                    <h2>Lista de Categorias</h2>
+                    <h2>Lista de Marcas</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-4">
                     <a class="btn btn-primary text-light" data-toggle="modal" data-target="#modal-form">
-                        <i class="fa fa-plus-square"></i> Nova Categoria
+                        <i class="fa fa-plus-square"></i> Nova Marca
                     </a>
                 </div>
             </div>
@@ -42,16 +42,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:id="'row_' + ${category.id}" th:each="category: ${list.content}">
-                    <td style="width:150px" class="text-center" th:text="${category.id}">0</td>
-                    <td><a th:href="'javascript:edit(\'/category/ajax/' + ${category.id} + '\');'"
-                           th:text="${category.name}">Categorias</a></td>
+                <tr th:id="'row_' + ${brand.id}" th:each="brand: ${list.content}">
+                    <td style="width:150px" class="text-center" th:text="${brand.id}">0</td>
+                    <td><a th:href="'javascript:editBrand(\'/brand/ajax/' + ${brand.id} + '\');'"
+                           th:text="${brand.name}">Marcas</a></td>
 
                     <td style="width:200px" class="text-center">
-                        <a th:href="'javascript:edit(\'/category/ajax/' + ${category.id} + '\');'"
+                        <a th:href="'javascript:editBrand(\'/brand/ajax/' + ${brand.id} + '\');'"
                            class="btn btn-primary btn-xs"> <i class="fa fa-edit"></i>
                         </a> &nbsp;
-                        <a title="Remover" th:href="'javascript:remove('+ ${category.id} +',\'/category\');'"
+                        <a title="Remover" th:href="'javascript:remove('+ ${brand.id} +',\'/brand\');'"
                            class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
@@ -66,7 +66,7 @@
                         th:classappend="${pageNumber ==list.number +1} ? active"
                         th:each="pageNumber : ${pageNumbers}">
                         <a class="page-link"
-                           th:href="@{/category/page(size=${list.size}, page=${pageNumber})}"
+                           th:href="@{/brand/page(size=${list.size}, page=${pageNumber})}"
                            th:text="${pageNumber}">
                         </a>
                     </li>
@@ -80,17 +80,29 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3>Categoria</h3>
+                    <h3>Marca</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="ture">x</button>
                 </div><!--modal header-->
                 <div class="modal-body">
-                    <form id="frm" name="frm" method="post" class="form-vertical" th:action="@{/category/ajax}">
+                    <form id="frm" name="frm" method="post" class="form-vertical" th:action="@{/brand/ajax}">
                         <div class="container-fluid">
                             <input type="hidden" id="id" name="id"/>
                             <div class="form-group">
                                 <label for="name">Nome</label>
                                 <input type="text" class="form-control" id="name" name="name"/>
                             </div>
+
+                            <div class="form-group">
+                                <label for="country">País</label>
+                                <select id="country" name="country" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <option th:each="country : ${countries}"
+                                            th:value="${country.id}"
+                                            th:text="${country.name}"></option>
+                                </select>
+                            </div>
+
+
                         </div>
                     </form>
                 </div> <!--modal body-->
@@ -98,7 +110,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-hidden="true">
                         <i class="fa fa-cancel"></i> Cancelar
                     </button>
-                    <button class="btn btn-success" type="button" onClick="save('/category/page')">
+                    <button class="btn btn-success" type="button" onClick="save('/brand/page')">
                         <i class="fa fa-save"></i> Salvar
                     </button>
                 </div>

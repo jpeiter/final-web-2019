@@ -33,9 +33,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login")
                 .and().authorizeRequests()
                 .antMatchers("/register/**").hasAnyRole("ADMIN")
-                .antMatchers("/category/**").permitAll()
-                .antMatchers("/product/**").permitAll()
-                .antMatchers("/brand/**").permitAll()
+                .antMatchers("/register/**").hasAnyRole("ADMIN")
+                .antMatchers("/brand/**").hasAnyRole("ADMIN")
+                .antMatchers("/product/**").hasAnyRole("ADMIN")
                 .antMatchers("/**").authenticated();
     }
 
