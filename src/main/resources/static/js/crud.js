@@ -71,3 +71,40 @@ function editBrand(url) {
     });
     $('#modal-form').modal();
 }
+
+function editSupplier(url) {
+    $.get(url, function (entity, status) {
+        $('#id').val(entity.id);
+        $('#name').val(entity.name);
+        $('#code').val(entity.code);
+        $('#country').val(entity.country.id);
+        $('#phone').val(entity.phone);
+        $('#email').val(entity.email);
+    });
+    $('#modal-form').modal();
+}
+
+function editProduct(url) {
+    $.get(url, function (entity, status) {
+        $('#id').val(entity.id);
+        $('#name').val(entity.name);
+        $('#description').val(entity.description);
+        $('#price').val(entity.price);
+        $('#category').val(entity.category.id);
+        $('#brand').val(entity.brand.id);
+        $('#rating').val(entity.rating);
+    });
+    $('#modal-form').modal();
+}
+
+function viewPurchase(url) {
+    $.get(url, function (entity, status) {
+        $('#id').val(entity.id);
+        $('#name').val(entity.name);
+        $('#code').val(entity.code);
+        $('#country').val(entity.country.id);
+        $('#phone').val(entity.phone);
+        $('#email').val(entity.email);
+    });
+    $('#modal-form').modal();
+}

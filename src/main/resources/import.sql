@@ -257,12 +257,19 @@ INSERT INTO country (name, code) VALUES ('Wallis e Futuna', 'WLF');
 INSERT INTO country (name, code) VALUES ('Zambia', 'ZMB');
 INSERT INTO country (name, code) VALUES ('Zimbabue', 'ZWE');
 
+
+INSERT INTO supplier (name, code, country_id, phone, email) VALUES ('Einsteins Front Flip', 'ENG1', 5, '+49-157-555-5770', 'germ@ny.deu');
+INSERT INTO supplier (name, code, country_id, phone, email) VALUES ('Westminster Abbey INC.', 'GER1', 109, null, 'will.i.am@shakespeare.com');
+
+INSERT INTO brand (name, country_id) VALUES ('Swarovski AG', 18);
+
+INSERT INTO product (name, description, price, category_id, brand_id, rating) VALUES ('Esmeralda Preta 50k', 'Joia rarissma encontrada no sertao nordestino brasileiro', 50000.00, 4, 1, 8.5);
+
 INSERT INTO "user" (name, username, password) VALUES ('Administrador', 'admin', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
 INSERT INTO "user" (name, username, password) VALUES ('Teste', 'teste', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
 
 INSERT INTO "role" (name) VALUES ('ROLE_ADMIN');
 INSERT INTO "role" (name) VALUES ('ROLE_USER');
-
 
 INSERT INTO user_roles (user_id, roles_id) VALUES (1, 1);
 INSERT INTO user_roles (user_id, roles_id) VALUES (1, 2);

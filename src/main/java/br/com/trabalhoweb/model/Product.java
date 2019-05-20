@@ -26,22 +26,27 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome", length = 50, nullable = false)
+    @Column(name = "name", length = 50, nullable = false)
     @NotNull(message = "Informe o nome!")
     private String name;
 
-    @Column(name = "description", length = 500, nullable = true)
+    @Column(name = "description", length = 500, nullable = false)
     private String description;
 
     @DecimalMin(value = "0.01",
             message = "O valor deve ser maior que R$ 0.00.")
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "price", nullable = false)
+    private BigDecimal price;
 
     @ManyToOne()
-    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     @NotNull(message = "Selecione a categoria!")
     private Category category;
+
+    @ManyToOne()
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    @NotNull(message = "Selecione a marca!")
+    private Brand brand;
 
     @Column(name = "rating", nullable = false)
     @NotNull(message = "Preencha o campo nota!")

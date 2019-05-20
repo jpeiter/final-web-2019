@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default-layout}">
 <head>
-    <title layout:fragment="title">Ahoy! | Marcas</title>
+    <title layout:fragment="title">Ahoy! | Fornecedores</title>
 </head>
 <body>
 <section layout:fragment="conteudo">
@@ -12,13 +12,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-8">
-                    <h2>Lista de Marcas</h2>
+                    <h2>Lista de Fornecedores</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-4">
                     <a class="btn btn-primary text-light" data-toggle="modal" data-target="#modal-form">
-                        <i class="fa fa-plus-square"></i> Nova Marca
+                        <i class="fa fa-plus-square"></i> Novo Fornecedor
                     </a>
                 </div>
             </div>
@@ -38,20 +38,25 @@
                 <tr>
                     <th>Código</th>
                     <th>Nome</th>
+                    <th>País</th>
+                    <th>Telefone</th>
+                    <th>E-mail</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:id="'row_' + ${brand.id}" th:each="brand: ${list.content}">
-                    <td style="width:150px" class="text-center" th:text="${brand.id}">0</td>
-                    <td><a th:href="'javascript:editBrand(\'/brand/ajax/' + ${brand.id} + '\');'"
-                           th:text="${brand.name}">Marcas</a></td>
+                <tr th:id="'row_' + ${supplier.id}" th:each="supplier: ${list.content}">
+                    <td style="width:150px" class="text-center" th:text="${supplier.id}">0</td>
+                    <td><a th:text="${supplier.name}">Nome</a></td>
+                    <td><span th:text="${supplier.country.name}">País</span></td>
+                    <td><span th:text="${supplier.phone}">Telefone</span></td>
+                    <td><span th:text="${supplier.email}">E-mail</span></td>
 
                     <td style="width:200px" class="text-center">
-                        <a th:href="'javascript:editBrand(\'/brand/ajax/' + ${brand.id} + '\');'"
+                        <a th:href="'javascript:editSupplier(\'/supplier/ajax/' + ${supplier.id} + '\');'"
                            class="btn btn-primary btn-xs"> <i class="fa fa-edit"></i>
                         </a> &nbsp;
-                        <a title="Remover" th:href="'javascript:remove('+ ${brand.id} +',\'/brand\');'"
+                        <a title="Remover" th:href="'javascript:remove('+ ${supplier.id} +',\'/supplier\');'"
                            class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
@@ -66,7 +71,7 @@
                         th:classappend="${pageNumber ==list.number +1} ? active"
                         th:each="pageNumber : ${pageNumbers}">
                         <a class="page-link"
-                           th:href="@{/brand/page(size=${list.size}, page=${pageNumber})}"
+                           th:href="@{/supplier/page(size=${list.size}, page=${pageNumber})}"
                            th:text="${pageNumber}">
                         </a>
                     </li>
@@ -80,16 +85,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3>Marca</h3>
+                    <h3>Fornecedor</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="ture">x</button>
                 </div><!--modal header-->
                 <div class="modal-body">
-                    <form id="frm" name="frm" method="post" class="form-vertical" th:action="@{/brand/ajax}">
+                    <form id="frm" name="frm" method="post" class="form-vertical" th:action="@{/supplier/ajax}">
                         <div class="container-fluid">
                             <input type="hidden" id="id" name="id"/>
                             <div class="form-group">
                                 <label for="name">Nome*</label>
                                 <input type="text" class="form-control" id="name" name="name"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="code">Código*</label>
+                                <input type="text" class="form-control" id="code" name="code"/>
                             </div>
 
                             <div class="form-group">
@@ -102,6 +112,16 @@
                                 </select>
                             </div>
 
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="text" class="form-control" id="phone" name="phone"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="text" class="form-control" id="email" name="email"/>
+                            </div>
+
 
                         </div>
                     </form>
@@ -110,7 +130,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-hidden="true">
                         <i class="fa fa-cancel"></i> Cancelar
                     </button>
-                    <button class="btn btn-success" type="button" onClick="save('/brand/page')">
+                    <button class="btn btn-success" type="button" onClick="save('/supplier/page')">
                         <i class="fa fa-save"></i> Salvar
                     </button>
                 </div>
