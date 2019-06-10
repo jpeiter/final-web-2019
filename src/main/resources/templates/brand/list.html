@@ -38,6 +38,7 @@
                 <tr>
                     <th>Código</th>
                     <th>Nome</th>
+                    <th>País</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
@@ -46,6 +47,7 @@
                     <td style="width:150px" class="text-center" th:text="${brand.id}">0</td>
                     <td><a th:href="'javascript:editBrand(\'/brand/ajax/' + ${brand.id} + '\');'"
                            th:text="${brand.name}">Marcas</a></td>
+                    <td><span th:text="${brand.country.code}"></span></td>
 
                     <td style="width:200px" class="text-center">
                         <a th:href="'javascript:editBrand(\'/brand/ajax/' + ${brand.id} + '\');'"

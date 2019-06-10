@@ -3,6 +3,7 @@ package br.com.trabalhoweb.model;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,6 +22,8 @@ import java.util.Set;
 public class User implements Serializable, UserDetails {
 
     private static final long serialVersionUID = -5644454145302858777L;
+
+    private static final BCryptPasswordEncoder ENCODER = new BCryptPasswordEncoder(10);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,6 +49,16 @@ public class User implements Serializable, UserDetails {
     }
 
     @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
@@ -63,6 +76,10 @@ public class User implements Serializable, UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public String getEncodedPassword(String password) {
+        return ENCODER.encode(password);
     }
 
 }

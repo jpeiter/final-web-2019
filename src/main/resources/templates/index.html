@@ -10,10 +10,23 @@
 <body>
 <section layout:fragment="conteudo">
     <div class="page-header">
-        <div class="container-fluid">
-            <div class="jumbotron">
-                <h1>Bem vindo.</h1>
-            </div>
+        <div class="container-fluid mt-0">
+			
+			<div class="row my-1">
+				<a th:href="@{/category/page}" class="btn btn-primary">Lista de Categorias</a>
+			</div>
+			<div class="row my-1">
+				<a th:href="@{/supplier/page}" class="btn btn-primary">Lista de Fornecedores</a>
+			</div>
+			<div class="row my-1">
+				<a th:href="@{/brand/page}" class="btn btn-primary">Lista de Marcas</a>
+			</div>
+			<div class="row my-1">
+				<a th:href="@{/product/page}" class="btn btn-primary">Lista de Produtos</a>
+			</div>
+			<div class="row my-1">
+				<a th:href="@{/purchase/page}" class="btn btn-primary">Lista de Compras</a>
+			</div>
         </div>
     </div>
 </section>
