@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <title layout:fragment="title">Ahoy! | Nova Compra</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-8">
+                    <h2>Nova Compra</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <a class="btn btn-primary" th:href="@{/purchase/page}">
+                        <i class="fa fa-table"></i> Histórico de Compras
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <form method="POST" class="form-vertical" th:object="${purchase}"
+              th:action="@{/purchase/new}">
+
+            <input type="hidden" th:field="*{id}"/>
+
+            <div class="row">
+
+                <div class="form-group col-4">
+                    <label for="date">Data de Compra*</label>
+                    <input type="text" class="form-control datepicker" id="date" name="date"
+                           autocomplete="off"/>
+                </div>
+
+
+                <div class="form-group col-5">
+                    <label for="supplier">Fornecedor*</label>
+                    <select id="supplier" name="supplier" class="form-control">
+                        <option value="">Selecione</option>
+                        <option th:each="supplier : ${suppliers}"
+                                th:value="${supplier.id}"
+                                th:text="${supplier.name}"></option>
+                    </select>
+                </div>
+
+                <div class="col-3">
+                    <label>Adicionar*</label>
+                    <a class="btn bg-brown-light text-gold" data-toggle="modal" data-target="#modal-product">
+                        <i class="fa fa-plus-square"></i> Adicionar Produto
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-9"></div>
+
+
+                <div class="form-group col-3 float-right">
+                    <label for="totalPrice">Total</label>
+                    <input type="text" class="form-control" id="totalPrice" name="totalPrice" disabled/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn  btn-primary" type="submit">
+                    <i class="fa fa-save"></i>&nbsp; Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!--MODAL PRODUTO-->
+    <div class="modal modal-form h-100" th:id="modal-product">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Produto</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="ture">x</button>
+                </div><!--modal header-->
+                <div class="modal-body">
+                    <form id="frm-product" name="frm-product" method="post" class="form-vertical">
+                        <div class="container-fluid">
+                            <input type="hidden" id="id" name="id"/>
+
+                            <div class="form-group">
+                                <label for="product">Produto*</label>
+                                <select id="product" name="product" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <option th:each="product : ${products}"
+                                            th:value="${product.id}"
+                                            th:text="${product.name}"></option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quantity">Quantidade</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" step="0.1"/>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div> <!--modal body-->
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-hidden="true">
+                        <i class="fa fa-cancel"></i> Cancelar
+                    </button>
+                    <button class="btn btn-success" type="button" onClick="addProductPurchase()">
+                        <i class="fa fa-save"></i> Salvar
+                    </button>
+                </div>
+            </div> <!--modal content-->
+        </div> <!-- modal dialog-->
+    </div> <!--FIM MODAL PRODUTO-->
+</section>
+</body>
+</html>
