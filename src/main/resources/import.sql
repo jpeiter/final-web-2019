@@ -274,3 +274,6 @@ INSERT INTO "role" (name) VALUES ('ROLE_USER');
 INSERT INTO user_roles (user_id, roles_id) VALUES (1, 1);
 INSERT INTO user_roles (user_id, roles_id) VALUES (1, 2);
 INSERT INTO user_roles (user_id, roles_id) VALUES (2, 2);
+
+INSERT INTO purchase (date, total_price, supplier_id, user_id) VALUES ('2019-06-11', 100000, 1, 1);
+INSERT INTO product_purchase (quantity, total_price, product_id, purchase_id) VALUES (2, 100000, 1, 1);
