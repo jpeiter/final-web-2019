@@ -1,4 +1,4 @@
-package br.com.trabalhoweb.settings;
+package br.com.trabalhoweb.config;
 
 import br.com.trabalhoweb.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +33,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login")
                 .and().authorizeRequests()
                 .antMatchers("/register/**").hasAnyRole("ADMIN")
-                .antMatchers("/register/**").hasAnyRole("ADMIN")
+                .antMatchers("/purchase/**").permitAll()
                 .antMatchers("/brand/**").hasAnyRole("ADMIN")
                 .antMatchers("/product/**").hasAnyRole("ADMIN")
-                .antMatchers("/**").authenticated();
+                .antMatchers("/**").authenticated()
+                ;
     }
 
     @Override

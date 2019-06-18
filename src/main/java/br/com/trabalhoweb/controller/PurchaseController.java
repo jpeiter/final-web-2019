@@ -9,11 +9,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -52,7 +55,10 @@ public class PurchaseController extends CrudController<Purchase, Long> {
     @Override
     @GetMapping("new")
     protected ModelAndView form(Purchase purchase) {
-        ModelAndView modelAndView = new ModelAndView(this.getUrl() + "/form");
+        ModelAndView modelAndView = new ModelAndView(this.getUrl() + "/new");
+        modelAndView.addObject("suppliers", supplierService.findAll());
+        modelAndView.addObject("products", productService.findAll());
+        modelAndView.addObject("users", userService.findAll());
         if (purchase != null) {
             modelAndView.addObject(purchase);
         } else {
@@ -115,4 +121,33 @@ public class PurchaseController extends CrudController<Purchase, Long> {
 
         return modelAndView;
     }
+
+    @GetMapping("productPurchases/{id}")
+    @ResponseBody
+    public List<ProductPurchase> findByPurchase(@PathVariable Long id) {
+        List<ProductPurchase> pp = productPurchaseService.findByPurchase(purchaseService.findOne(id));
+        return pp;
+    }
+
+    @PostMapping("json")
+    public ResponseEntity<?> saveJson(@RequestBody @Valid Purchase entity, BindingResult result, Model model,
+                                      RedirectAttributes attributes) {
+        Purchase p = entity;
+        if (result.hasErrors()) {
+            return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
+        }
+
+        for (ProductPurchase pp : entity.getProductsPurchase()) {
+            pp.setProduct(productService.findOne(pp.getProduct().getId()));
+            BigDecimal totalValue = pp.getQuantity().multiply(pp.getProduct().getPrice());
+            pp.setTotalPrice(totalValue);
+            pp.setPurchase(entity);
+
+            getService().save(entity);
+
+            productPurchaseService.save(pp);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

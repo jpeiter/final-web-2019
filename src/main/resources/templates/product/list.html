@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-4">
-                    <a class="btn btn-primary text-light" data-toggle="modal" data-target="#modal-form">
+                    <a class="btn btn-primary text-light" id="btn-new-form" data-toggle="modal" data-target="#modal-form">
                         <i class="fa fa-plus-square"></i> Novo Produto
                     </a>
                 </div>
@@ -41,7 +41,6 @@
                     <th>Descrição</th>
                     <th>Valor</th>
                     <th>Marca</th>
-                    <th>Nota</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
@@ -52,7 +51,6 @@
                     <td><span th:text="${product.description}">Descrição</span></td>
                     <td><span th:text="${product.price}">Preço</span></td>
                     <td><span th:text="${product.brand.name}">Marca</span></td>
-                    <td><span th:text="${product.rating}">Nota</span></td>
 
                     <td style="width:200px" class="text-center">
                         <a th:href="'javascript:editProduct(\'/product/ajax/' + ${product.id} + '\');'"
@@ -91,7 +89,8 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="ture">x</button>
                 </div><!--modal header-->
                 <div class="modal-body">
-                    <form id="frm" name="frm" method="post" class="form-vertical" th:action="@{/product/ajax}">
+                    <form id="frm" name="frm" method="post" class="form-vertical" th:action="@{/product/upload}"
+                          enctype="multipart/form-data">
                         <div class="container-fluid">
                             <input type="hidden" id="id" name="id"/>
 
@@ -102,8 +101,7 @@
 
                             <div class="form-group">
                                 <label for="description">Descrição*</label>
-                                <textarea class="form-control" id="description" name="description">
-                                </textarea>
+                                <textarea class="form-control" id="description" name="description"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -136,6 +134,10 @@
                                 <input type="number" class="form-control" id="rating" name="rating" step="0.1"/>
                             </div>
 
+                            <div class="form-group">
+                                <label for="attachments">Anexos:</label>
+                                <input type="file" name="attachments" id="attachments" required class="form-control" multiple/>
+                            </div>
 
                         </div>
                     </form>

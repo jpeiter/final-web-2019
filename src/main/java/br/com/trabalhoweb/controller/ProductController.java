@@ -13,9 +13,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -106,4 +112,56 @@ public class ProductController extends CrudController<Product, Long> {
 
         return modelAndView;
     }
+
+    @PostMapping("upload")
+    public ResponseEntity<?> save(@Valid Product entity, BindingResult result,
+                                  @RequestParam("attachments") ArrayList<MultipartFile> attachments,
+                                  HttpServletRequest request) {
+        if (result.hasErrors()) {
+            return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
+        }
+
+        if (attachments.size() > 0 && !attachments.get(0).getOriginalFilename().isEmpty()) {
+            saveFile(entity.getId(), attachments, request);
+        }
+
+        getService().save(entity);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    private void saveFile(Long id, ArrayList<MultipartFile> attachments, HttpServletRequest request) {
+        File dir = new File(request.getServletContext().getRealPath("/images/"));
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+        String caminhoAnexo = request.getServletContext().getRealPath("/images/");
+
+        String extensao = "";
+        String nomeArquivo = "";
+
+        for (MultipartFile attachment : attachments) {
+
+            int i = 0;
+            extensao = attachment
+                    .getOriginalFilename()
+                    .substring(
+                            attachment.getOriginalFilename().lastIndexOf(".")
+                    );
+            nomeArquivo = id + "_" + i + extensao;
+            i++;
+
+            try {
+                FileOutputStream fileOut = new FileOutputStream(
+                        new File(caminhoAnexo + nomeArquivo)
+                );
+                BufferedOutputStream stream = new BufferedOutputStream(fileOut);
+                stream.write(attachment.getBytes());
+                stream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

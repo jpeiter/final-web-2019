@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default-layout}">
 <head>
-    <title layout:fragment="title">Ahoy! | Compras</title>
+    <title layout:fragment="title">Ahoy! | Histórico de Compras</title>
 </head>
 <body>
 <section layout:fragment="conteudo">
@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-4">
-                    <a class="btn btn-primary text-light" data-toggle="modal" data-target="#modal-form">
+                    <a class="btn btn-primary text-light" th:href="@{new}">
                         <i class="fa fa-plus-square"></i> Nova Compra
                     </a>
                 </div>
@@ -52,14 +52,12 @@
 
                     <td style="width:200px" class="text-center">
                         <a th:href="'javascript:editPurchase(\'/purchase/ajax/' + ${purchase.id} + '\');'"
-                           class="btn btn-primary btn-xs"> <i class="fa fa-edit"></i>
+                           class="btn btn-primary btn-xs"> <i class="fa fa-eye"></i>
                         </a> &nbsp;
-                        <a title="Remover" th:href="'javascript:remove('+ ${purchase.id} +',\'/purchase\');'"
-                           class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                 <tr th:if="${list.empty}">
-                    <td colspan="3">Nenhum registro encontrado.</td>
+                    <td colspan="5">Nenhum registro encontrado.</td>
                 </tr>
                 </tbody>
             </table>
