@@ -4,8 +4,8 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default-layout}">
 <head>
-    <title layout:fragment="title">Ahoy! | Nova Compra</title>
 </head>
+<title layout:fragment="title">Ahoy! | Nova Compra</title>
 
 <body>
 <section layout:fragment="conteudo">
@@ -28,54 +28,60 @@
     </div>
 
     <div class="container-fluid">
-        <form method="POST" class="form-vertical" th:object="${purchase}"
-              th:action="@{/purchase/new}">
+        <div class="row">
 
-            <input type="hidden" th:field="*{id}"/>
-
-            <div class="row">
-
-                <div class="form-group col-4">
-                    <label for="date">Data de Compra*</label>
-                    <input type="text" class="form-control datepicker" id="date" name="date"
-                           autocomplete="off"/>
-                </div>
-
-
-                <div class="form-group col-5">
-                    <label for="supplier">Fornecedor*</label>
-                    <select id="supplier" name="supplier" class="form-control">
-                        <option value="">Selecione</option>
-                        <option th:each="supplier : ${suppliers}"
-                                th:value="${supplier.id}"
-                                th:text="${supplier.name}"></option>
-                    </select>
-                </div>
-
-                <div class="col-3">
-                    <label>Adicionar*</label>
-                    <a class="btn bg-brown-light text-gold" data-toggle="modal" data-target="#modal-product">
-                        <i class="fa fa-plus-square"></i> Adicionar Produto
-                    </a>
-                </div>
+            <div class="col-4">
+                <label for="date">Data de Compra*</label>
+                <input type="text" class="form-control datepicker" id="date" name="date"
+                       autocomplete="off"/>
             </div>
 
-            <div class="row">
-                <div class="col-9"></div>
 
-
-                <div class="form-group col-3 float-right">
-                    <label for="totalPrice">Total</label>
-                    <input type="text" class="form-control" id="totalPrice" name="totalPrice" disabled/>
-                </div>
+            <div class="col-5">
+                <label for="supplier">Fornecedor*</label>
+                <select id="supplier" name="supplier" class="form-control">
+                    <option value="">Selecione</option>
+                    <option th:each="supplier : ${suppliers}"
+                            th:value="${supplier.id}"
+                            th:text="${supplier.name}"></option>
+                </select>
             </div>
 
-            <div class="form-group">
-                <button class="btn  btn-primary" type="submit">
-                    <i class="fa fa-save"></i>&nbsp; Salvar
+            <div class="col-3">
+                <label for="user">Usuário*</label>
+                <select id="user" name="user" class="form-control">
+                    <option value="">Selecione</option>
+                    <option th:each="user : ${users}"
+                            th:value="${user.id}"
+                            th:text="${user.name}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 my-3">
+                <a class="btn bg-brown-light text-gold" data-toggle="modal" data-target="#modal-product">
+                    <i class="fa fa-plus-square"></i> Adicionar Produto
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <label for="totalPrice">Total</label>
+                <input type="text" class="form-control" id="totalPrice" name="totalPrice" disabled/>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-1 my-3">
+                <button class="btn  btn-success text-brown" onclick="savePurchase()">
+                    <i class="fa fa-save"></i> Salvar
                 </button>
             </div>
-        </form>
+        </div>
+
     </div>
 
     <!--MODAL PRODUTO-->
@@ -87,28 +93,26 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="ture">x</button>
                 </div><!--modal header-->
                 <div class="modal-body">
-                    <form id="frm-product" name="frm-product" method="post" class="form-vertical">
-                        <div class="container-fluid">
-                            <input type="hidden" id="id" name="id"/>
+                    <div class="container-fluid">
+                        <label for="product">Produto*</label>
+                        <select id="product" name="product" class="form-control">
+                            <option value="">Selecione</option>
+                            <option th:each="product : ${products}"
+                                    th:value="${product.id}"
+                                    th:text="${product.name}"
+                                    th:productPrice="${product.price}"
+                            ></option>
+                        </select>
 
-                            <div class="form-group">
-                                <label for="product">Produto*</label>
-                                <select id="product" name="product" class="form-control">
-                                    <option value="">Selecione</option>
-                                    <option th:each="product : ${products}"
-                                            th:value="${product.id}"
-                                            th:text="${product.name}"></option>
-                                </select>
-                            </div>
+                        <label for="quantity">Quantidade</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" step="0.1"
+                               max="100" min="0.1"/>
 
-                            <div class="form-group">
-                                <label for="quantity">Quantidade</label>
-                                <input type="number" class="form-control" id="quantity" name="quantity" step="0.1"/>
-                            </div>
+                        <label for="totalProductPrice">Total:</label>
+                        <input type="text" class="form-control" id="totalProductPrice"
+                               name="totalProductPrice" disabled/>
 
-
-                        </div>
-                    </form>
+                    </div>
                 </div> <!--modal body-->
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-hidden="true">

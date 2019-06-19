@@ -132,10 +132,11 @@ public class PurchaseController extends CrudController<Purchase, Long> {
     @PostMapping("json")
     public ResponseEntity<?> saveJson(@RequestBody @Valid Purchase entity, BindingResult result, Model model,
                                       RedirectAttributes attributes) {
-        Purchase p = entity;
         if (result.hasErrors()) {
             return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
+        entity.setSupplier(supplierService.findOne(entity.getSupplier().getId()));
+        entity.setUser(userService.findOne(entity.getUser().getId()));
 
         for (ProductPurchase pp : entity.getProductsPurchase()) {
             pp.setProduct(productService.findOne(pp.getProduct().getId()));
