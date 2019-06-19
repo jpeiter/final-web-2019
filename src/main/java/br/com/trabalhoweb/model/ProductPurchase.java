@@ -1,5 +1,7 @@
 package br.com.trabalhoweb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,14 +16,15 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = {"ppid"})
+@EqualsAndHashCode(of = {"id"})
+@JsonSerialize
 public class ProductPurchase implements Serializable {
 
     private static final long serialVersionUID = -4491130383413147049L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ppid;
+    private Long id;
 
     @Column(name = "quantity", nullable = false)
     private BigDecimal quantity;
@@ -37,4 +40,8 @@ public class ProductPurchase implements Serializable {
     @JoinColumn(name = "purchase_id", referencedColumnName = "id")
     private Purchase purchase;
 
+    @JsonIgnore
+    public Purchase getPurchase() {
+        return purchase;
+    }
 }

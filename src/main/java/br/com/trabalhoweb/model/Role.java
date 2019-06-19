@@ -1,5 +1,6 @@
 package br.com.trabalhoweb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -25,6 +26,7 @@ public class Role implements Serializable, GrantedAuthority {
     private String name;
 
     @Override
+    @JsonIgnore
     public String getAuthority() {
         return this.name;
     }
