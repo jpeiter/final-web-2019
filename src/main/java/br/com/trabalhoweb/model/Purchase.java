@@ -1,5 +1,6 @@
 package br.com.trabalhoweb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,7 +10,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -31,9 +31,6 @@ public class Purchase implements Serializable {
     @NotNull(message = "Informe o fornecedor antes de salvar.")
     private Supplier supplier;
 
-    @Column(name = "total_price", nullable = false)
-    private BigDecimal totalPrice;
-
     @NotNull(message = "Preencha o campo data de vencimento!")
     @Column(name = "date", nullable = false)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -46,4 +43,8 @@ public class Purchase implements Serializable {
     @OneToMany(mappedBy = "purchase", fetch = FetchType.LAZY)
     private List<ProductPurchase> productsPurchase;
 
+    @JsonIgnore
+    public List<ProductPurchase> getProductsPurchace(){
+        return productsPurchase;
+    }
 }

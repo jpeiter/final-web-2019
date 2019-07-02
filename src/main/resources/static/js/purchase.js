@@ -2,8 +2,7 @@ let purchase = {
     "supplier": {},
     "user": {},
     "date": String(),
-    "productsPurchase": new Array,
-    "totalPrice": 0.0
+    "productsPurchase": new Array
 };
 
 $('#totalPrice').mask('R$ 000.000.000.000.000,00', {reverse: true});
@@ -34,10 +33,8 @@ function savePurchase() {
             'error');
         return;
     } else {
-        let day = $('#date').val().split('/')[0];
-        let month = $('#date').val().split('/')[1];
-        let year = $('#date').val().split('/')[2];
-        purchase.date = year + '-' + month + '-' + day;
+        let date = $('#date').val().split('/').reverse().join('-')
+        purchase.date = date;
     }
 
     if ($('#supplier').val() === "") {
@@ -72,7 +69,7 @@ function savePurchase() {
         data: JSON.stringify(purchase),
         success: function () {
             swal({
-                title: 'Salvo!',
+                title: 'Yo ho ho!',
                 text: 'Compra feita com sucesso!',
                 type: 'success'
             }, () => {
@@ -81,7 +78,7 @@ function savePurchase() {
             });
         },
         error: function () {
-            swal('Erro!',
+            swal('Avast ye!',
                 'Não foi possível salvar a compra!',
                 'error');
         }
@@ -119,7 +116,7 @@ function addProductPurchase() {
         Number($('#product option:selected').attr('productPrice')),
         product.quantity
     );
-    $('#totalPrice').val('R$ '+ purchase.totalPrice.toFixed(2));
+    $('#totalPrice').val('R$ ' + purchase.totalPrice.toFixed(2));
 
     swal('Yo ho ho!',
         'Produto adicionado à compra!',

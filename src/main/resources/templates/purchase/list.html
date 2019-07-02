@@ -39,8 +39,7 @@
                     <th>Código</th>
                     <th>Fornecedor</th>
                     <th>Data</th>
-                    <th>Total</th>
-                    <th>Ações</th>
+                    <th>Usuário</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,16 +47,11 @@
                     <td style="width:150px" class="text-center" th:text="${purchase.id}">0</td>
                     <td><span th:text="${purchase.supplier.name}">Fornecedor</span></td>
                     <td><span th:text="${purchase.date}">Data</span></td>
-                    <td><span th:text="${purchase.totalPrice}">Total</span></td>
+                    <td><span th:text="${purchase.user.name}">Usuário</span></td>
 
-                    <td style="width:200px" class="text-center">
-                        <a th:href="'javascript:editPurchase(\'/purchase/ajax/' + ${purchase.id} + '\');'"
-                           class="btn btn-primary btn-xs"> <i class="fa fa-eye"></i>
-                        </a> &nbsp;
-                    </td>
                 </tr>
                 <tr th:if="${list.empty}">
-                    <td colspan="5">Nenhum registro encontrado.</td>
+                    <td colspan="4">Nenhum registro encontrado.</td>
                 </tr>
                 </tbody>
             </table>
@@ -76,92 +70,37 @@
         </div>
     </div>
 
-    <!--MODAL COMPRA-->
-    <div class="modal modal-form " th:id="modal-form">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Compra</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="ture">x</button>
-                </div><!--modal header-->
-                <div class="modal-body">
-                    <form id="frm" name="frm" method="post" class="form-vertical" th:action="@{/purchase/ajax}">
-                        <div class="container-fluid">
-                            <input type="hidden" id="id" name="id"/>
-
-                            <div class="form-group">
-                                <label for="date">Data de Compra*</label>
-                                <input type="text" class="form-control datepicker" id="date" name="date"
-                                       autocomplete="off"/>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="country">Fornecedor*</label>
-                                <select id="country" name="country" class="form-control">
-                                    <option value="">Selecione</option>
-                                    <option th:each="supplier : ${suppliers}"
-                                            th:value="${supplier.id}"
-                                            th:text="${supplier.name}"></option>
-                                </select>
-                            </div>
-
-                            <a class="btn btn-primary text-light" data-toggle="modal" data-target="#modal-product">
-                                <i class="fa fa-plus-square"></i> Adicionar Produto
-                            </a>
-
-                            <div class="form-group">
-                                <label for="totalPrice">Total</label>
-                                <input type="text" class="form-control" id="totalPrice" name="totalPrice" disabled/>
-                            </div>
-
-                        </div>
-                    </form>
-                </div> <!--modal body-->
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-hidden="true">
-                        <i class="fa fa-cancel"></i> Cancelar
-                    </button>
-                    <button class="btn btn-success" type="button" onClick="save('/purchase/page')">
-                        <i class="fa fa-save"></i> Salvar
-                    </button>
-                </div>
-            </div> <!--modal content-->
-        </div> <!-- modal dialog-->
-    </div>
-    <!--FIM MODAL COMPRA-->
-
+    <!--MODAL COMPRA PRODUTOS-->
     <!--MODAL PRODUTO-->
-    <div class="modal modal-form h-50" th:id="modal-product">
+    <div class="modal modal-form h-100" th:id="modal-product">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3>Produto</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="ture">x</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 </div><!--modal header-->
                 <div class="modal-body">
-                    <form id="frm-product" name="frm-product" method="post" class="form-vertical">
-                        <div class="container-fluid">
-                            <input type="hidden" id="ppid" name="ppid"/>
+                    <div class="container-fluid">
+                        <label for="product">Produto*</label>
+                        <select id="product" name="product" class="form-control">
+                            <option value="">Selecione</option>
+                            <option th:each="product : ${products}"
+                                    th:value="${product.id}"
+                                    th:idProd="${product.id}"
+                                    th:text="${product.name}"
+                                    th:productPrice="${product.price}"
+                            ></option>
+                        </select>
 
-                            <div class="form-group">
-                                <label for="country">Produto*</label>
-                                <select id="product" name="product" class="form-control">
-                                    <option value="">Selecione</option>
-                                    <option th:each="product : ${products}"
-                                            th:value="${product.id}"
-                                            th:text="${product.name}"></option>
-                                </select>
-                            </div>
+                        <label for="quantity">Quantidade</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" step="0.1"
+                               max="100" min="0.1"/>
 
-                            <div class="form-group">
-                                <label for="quantity">Quantidade</label>
-                                <input type="number" class="form-control" id="quantity" name="quantity" step="0.1"/>
-                            </div>
+                        <label for="totalProductPrice">Total:</label>
+                        <input type="text" class="form-control" id="totalProductPrice"
+                               name="totalProductPrice" disabled/>
 
-
-                        </div>
-                    </form>
+                    </div>
                 </div> <!--modal body-->
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-hidden="true">
@@ -174,6 +113,9 @@
             </div> <!--modal content-->
         </div> <!-- modal dialog-->
     </div> <!--FIM MODAL PRODUTO-->
+    <!--FIM MODAL COMPRA PRODUTOS-->
+
+
 </section>
 </body>
 </html>

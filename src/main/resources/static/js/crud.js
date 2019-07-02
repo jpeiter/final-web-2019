@@ -127,15 +127,3 @@ function editProduct(url) {
     });
     $('#modal-form').modal();
 }
-
-function viewPurchase(url) {
-    $.get(url, function (entity, status) {
-        $('#id').val(entity.id);
-        $('#name').val(entity.name);
-        $('#code').val(entity.code);
-        $('#country').val(entity.country.id);
-        $('#phone').val(entity.phone);
-        $('#email').val(entity.email);
-    });
-    $('#modal-form').modal();
-}

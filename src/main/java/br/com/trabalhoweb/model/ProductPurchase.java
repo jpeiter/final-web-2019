@@ -38,10 +38,11 @@ public class ProductPurchase implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "purchase_id", referencedColumnName = "id")
+    @JsonIgnore
     private Purchase purchase;
 
-    @JsonIgnore
-    public Purchase getPurchase() {
-        return purchase;
-    }
+//    @JsonIgnore
+//    public Product getProduct() {
+//        return product;
+//    }
 }

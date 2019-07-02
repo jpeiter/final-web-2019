@@ -76,26 +76,6 @@ public class PurchaseController extends CrudController<Purchase, Long> {
         return modelAndView;
     }
 
-    @PostMapping("ajax")
-    public ResponseEntity<?> save(@Valid Purchase entity, BindingResult result) {
-        if (result.hasErrors()) {
-            return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
-        }
-
-        for (ProductPurchase productPurchase : entity.getProductsPurchase()) {
-            productPurchaseService.save(productPurchase);
-        }
-
-        getService().save(entity);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @GetMapping("ajax/{id}")
-    @ResponseBody
-    public Purchase edit(@PathVariable Long id) {
-        return getService().findOne(id);
-    }
-
     @Override
     @GetMapping("page")
     public ModelAndView list(@RequestParam("page") Optional<Integer> page,
@@ -122,13 +102,6 @@ public class PurchaseController extends CrudController<Purchase, Long> {
         return modelAndView;
     }
 
-    @GetMapping("productPurchases/{id}")
-    @ResponseBody
-    public List<ProductPurchase> findByPurchase(@PathVariable Long id) {
-        List<ProductPurchase> pp = productPurchaseService.findByPurchase(purchaseService.findOne(id));
-        return pp;
-    }
-
     @PostMapping("json")
     public ResponseEntity<?> saveJson(@RequestBody @Valid Purchase entity, BindingResult result, Model model,
                                       RedirectAttributes attributes) {
@@ -138,16 +111,17 @@ public class PurchaseController extends CrudController<Purchase, Long> {
         entity.setSupplier(supplierService.findOne(entity.getSupplier().getId()));
         entity.setUser(userService.findOne(entity.getUser().getId()));
 
+        getService().save(entity);
+
         for (ProductPurchase pp : entity.getProductsPurchase()) {
             pp.setProduct(productService.findOne(pp.getProduct().getId()));
             BigDecimal totalValue = pp.getQuantity().multiply(pp.getProduct().getPrice());
             pp.setTotalPrice(totalValue);
             pp.setPurchase(entity);
 
-            getService().save(entity);
-
             productPurchaseService.save(pp);
         }
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
