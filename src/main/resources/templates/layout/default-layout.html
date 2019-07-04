@@ -5,6 +5,8 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
         <title layout:fragment="title"></title>
+        <script type="text/javascript" th:src="@{/vendors/jquery/jquery-3.3.1.min.js}"></script>
+        <script type="text/javascript" th:src="@{/vendors/jquery/jquery.mask.js}"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -22,6 +24,7 @@
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link th:href="@{/vendors/sweetalert/sweetalert.css}" rel="stylesheet"/>
 
+        <link rel="stylesheet" th:href="@{/vendors/fa/font-awesome.min.css}">
         <link rel="stylesheet" th:href="@{/css/estilo.css}">
         <link rel="stylesheet" th:href="@{/css/components.css}">
         <link rel="stylesheet" th:href="@{/css/icons.css}">
@@ -240,8 +243,7 @@
         <!-- FIM FOOTER -->
 
 
-        <script type="text/javascript" th:src="@{/vendors/jquery/jquery-3.3.1.min.js}"></script>
-        <script type="text/javascript" th:src="@{/vendors/jquery/jquery.mask.js}"></script>
+
 
         <script type="text/javascript" th:src="@{/js/crud.js}"></script>
         <script type="text/javascript" th:src="@{/js/localStorage.js}"></script>

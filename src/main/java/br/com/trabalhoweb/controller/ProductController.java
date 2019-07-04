@@ -1,10 +1,7 @@
 package br.com.trabalhoweb.controller;
 
 import br.com.trabalhoweb.model.Product;
-import br.com.trabalhoweb.service.BrandService;
-import br.com.trabalhoweb.service.CategoryService;
-import br.com.trabalhoweb.service.CrudService;
-import br.com.trabalhoweb.service.ProductService;
+import br.com.trabalhoweb.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,12 +13,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,6 +40,12 @@ public class ProductController extends CrudController<Product, Long> {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private CountryService countryService;
+
+    @Autowired
+    private EntityManager em;
 
 
     @Override
@@ -66,8 +73,9 @@ public class ProductController extends CrudController<Product, Long> {
     @Override
     @GetMapping("{id}")
     protected ModelAndView form(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView(this.getUrl() + "/form");
-        modelAndView.addObject(this.getService().findOne(id));
+        ModelAndView modelAndView = new ModelAndView(this.getUrl() + "/product");
+        modelAndView.addObject("product", this.getService().findOne(id));
+        modelAndView.addObject("countries", countryService.findAll());
 
         return modelAndView;
     }
@@ -86,6 +94,32 @@ public class ProductController extends CrudController<Product, Long> {
     @ResponseBody
     public Product edit(@PathVariable Long id) {
         return getService().findOne(id);
+    }
+
+    @GetMapping("{prodId}/images")
+    public ResponseEntity<?> getProductImages(HttpServletRequest request,
+                                            @PathVariable Long prodId
+                                            ) {
+
+        File dir = new File("C:\\trabalhoweb\\images\\");
+        List<File> files = Arrays.asList(dir.listFiles());
+
+        List<byte[]> images = new ArrayList<>();
+
+            String name = files.get(0).getName();
+            String sub = name.subSequence(0, prodId.toString().length()).toString();
+            String p = prodId.toString();
+            if (files.get(0).getName().subSequence(0, prodId.toString().length()).equals(prodId.toString())) {
+                try {
+                    images.add(Files.readAllBytes(files.get(0).toPath()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
+        return new ResponseEntity<>(images, HttpStatus.OK);
     }
 
     @Override
@@ -115,48 +149,45 @@ public class ProductController extends CrudController<Product, Long> {
 
     @PostMapping("upload")
     public ResponseEntity<?> save(@Valid Product entity, BindingResult result,
-                                  @RequestParam("attachments") ArrayList<MultipartFile> attachments,
+                                  @RequestParam("attachments") MultipartFile[] anexos,
                                   HttpServletRequest request) {
         if (result.hasErrors()) {
             return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
-
-        if (attachments.size() > 0 && !attachments.get(0).getOriginalFilename().isEmpty()) {
-            saveFile(entity.getId(), attachments, request);
-        }
-
         getService().save(entity);
 
+        if (anexos.length > 0 && !anexos[0].getOriginalFilename().isEmpty()) {
+            saveFile(entity.getId(), anexos, request);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
-    private void saveFile(Long id, ArrayList<MultipartFile> attachments, HttpServletRequest request) {
-        File dir = new File(request.getServletContext().getRealPath("/images/"));
+    private void saveFile(Long id, MultipartFile[] anexos, HttpServletRequest request) {
+        File dir = new File("C:\\trabalhoweb\\images\\");
         if (!dir.exists()) {
             dir.mkdir();
         }
-        String caminhoAnexo = request.getServletContext().getRealPath("/images/");
+        String caminhoAnexo = "C:\\trabalhoweb\\images\\";
 
-        String extensao = "";
-        String nomeArquivo = "";
 
-        for (MultipartFile attachment : attachments) {
-
-            int i = 0;
-            extensao = attachment
+        int i = 0;
+        for (MultipartFile anexo : anexos) {
+            i++;
+            String extensao = anexo
                     .getOriginalFilename()
                     .substring(
-                            attachment.getOriginalFilename().lastIndexOf(".")
+                            anexo.getOriginalFilename().lastIndexOf("."),
+                            anexo.getOriginalFilename().length()
                     );
-            nomeArquivo = id + "_" + i + extensao;
-            i++;
+            String nomeArquivo = id + "_" + i + extensao;
 
             try {
                 FileOutputStream fileOut = new FileOutputStream(
                         new File(caminhoAnexo + nomeArquivo)
                 );
                 BufferedOutputStream stream = new BufferedOutputStream(fileOut);
-                stream.write(attachment.getBytes());
+                stream.write(anexo.getBytes());
                 stream.close();
             } catch (Exception e) {
                 e.printStackTrace();

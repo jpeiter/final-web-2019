@@ -47,8 +47,4 @@ public class Product implements Serializable {
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     @NotNull(message = "Selecione a marca!")
     private Brand brand;
-
-    @Column(name = "rating", nullable = false)
-    @NotNull(message = "Preencha o campo nota!")
-    private BigDecimal rating;
 }

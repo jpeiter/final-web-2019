@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <script type="text/javascript" th:src="@{/js/scriptsProduto.js}"></script>
+    <title layout:fragment="title" th:text="'Ahoy! | '+${product.name}"></title>
+    <link rel="stylesheet" th:href="@{/css/stylesproduto.css}">
+</head>
+<body>
+<section layout:fragment="conteudo">
+    <main class="container-fluid">
+
+        <div class="row justify-content-center py-2 w-100">
+            <!-- FOTOS -->
+            <div class="card w-auto px-3 col-md-6" id="fotos-produto">
+
+                <div class="card-body">
+                    <div class="bg-transparent mt-2" id="container-foto">
+                        <img class="" id="foto-grande" width="300" height="300">
+                    </div>
+                </div>
+            </div>
+            <!-- FIM FOTOS -->
+
+            <!-- INFOS -->
+            <div class="card w-auto px-3 py-2 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12" id="infos-produto">
+                <h1 th:text="${product.name}" th:prodId="${product.id}"></h1>
+
+                <ul class="list-inline mt-0" id="ul-rating">
+                    <li class="list-inline-item">
+                        <h4 class="font-weight-light" th:text="${product.brand.name}"></h4>
+                    </li>
+                    <li class="list-inline-item float-right">
+                        <div>
+                            <i class="fa fa-heart-o big-icon yellow" id="fav"></i>
+                        </div>
+
+                    </li>
+                </ul>
+
+
+                <div>
+                    <h1 class="font-weight-normal mt-0" th:text="'R$ '+${product.price}"
+                        th:prodPrice="${product.price}"></h1>
+
+                    <span class="d-none red" id="aviso-vendas">Para comprar grandes quantidade entre em contato com
+                        nosso setor de vendas!</span>
+                    <span class="d-none red" id="aviso-qtde-zero">Adicione pelo menos 1 item ao carrinho!</span>
+                    <div class="form-group row">
+                        <div class="col-lg-1 col-md-6 col-sm-6 col-xl-5 input-group ">
+                            <input type="number" id="qtdeItens" class="form-control w-50" min="1"
+                                   placeholder="Quantidade"
+                                   max="10"/>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xl-6 input-group ">
+                            <input type="submit" value="ADICIONAR AO CARRINHO" id="btn-add-carrinho"
+                                   class="btn btn-warning text-dark font-weight-bold "/>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- PAGAMENTOS -->
+                <div>
+                    <!-- FRETE -->
+                    <div id="infos-frete">
+                        <h4 class="text-dark mt-3">Frete grátis para todo o Brasil!</h4>
+                        <span class="d-none red my-0 position-static" id="aviso-frete">Selecione um estado para
+                        calcular o frete!</span>
+                        <div class="form-group row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xl-6 input-group">
+                                <select id="country" name="country" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <option th:each="country : ${countries}"
+                                            th:value="${country.id}"
+                                            th:countryId="${country.id}"
+                                            th:text="${country.name}"></option>
+                                </select>
+                                <div class="col-lg-3 col-md-3 col-sm-3 ">
+                                    <input type="submit" value="CALCULAR FRETE"
+                                           class="btn btn-warning text-dark font-weight-bold"
+                                           id="calc-frete"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ml-1 mt-0">
+                            <p class="mt-0 mb-3">Valor do frete: <span id="valor-frete"></span></p>
+                        </div>
+
+                    </div>
+                    <!-- FIM  FRETE -->
+
+                    <div class="form-group row w-100">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 input-group ">
+                            <div class="w-100">
+                                <button id="btn-comprar" class="btn text-light w-100">COMPRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIM INFOS -->
+            </div>
+        </div>
+    </main>
+
+</section>
+</body>
+</html>

@@ -1,5 +1,30 @@
+let shippingPrice;
+let quantity;
+
+$(document).ready(function () {
+    const prodId = $('h1').attr('prodId');
+    // const url = `/product/images`;
+    debugger;
+    let result;
+
+
+    $.ajax({
+        url: '/product/' + prodId + '/images',
+        method: 'GET',
+        success: function (data, status) {
+            console.log("Status: " + status);
+            $('#foto-grande').attr('src', 'data:image/png;base64, '+ data);
+            result = data;
+            debugger;
+        },
+        error: (e) => alert('errou' + String().valueOf(this.url))
+
+    });
+});
+
 $(function () {
-    //TROCAR FOTO PELA MINIATURA CLICADA
+
+//TROCAR FOTO PELA MINIATURA CLICADA
     $('.foto-menor-li').click(function () {
         let imgSrc = $(this).children().attr('src');
         $('#foto-grande').attr('src', imgSrc.replace("-mini", ""));
@@ -26,7 +51,7 @@ $(function () {
             localStorage.setItem('itensCarrinho', qtde);
 
             let nome = $('#nome-produto').text();
-            let preco = Number($('#preco').text().replace(/[^0-9.-]+/g, ""));
+            let preco = Number($('h1').attr('prodPrice'));
             let valorFrete = $('#valor-frete').text();
             let frete;
 
@@ -48,13 +73,8 @@ $(function () {
     });
 
     //SELECIONAR QUANTIDADES
-    $('#qtdeItens').click(function (e) {
-        e.preventDefault();
-
-        if ($('#qtdeItens').val() == "") {
-            $('#aviso-qtde-zero').addClass('d-block');
-            $('#aviso-qtde-zero').removeClass('d-none');
-        } else if ($('#qtdeItens').val() == 10) {
+    $('#qtdeItens').on('input', () => {
+        if ($('#qtdeItens').val() == 10) {
             $('#aviso-vendas').addClass('d-block');
             $('#aviso-vendas').removeClass('d-none');
         } else {
@@ -69,32 +89,17 @@ $(function () {
     //CALCULAR VALOR DO FRETE BASEADO POR REGIÃO
     $('#calc-frete').click(function (e) {
         e.preventDefault();
-        let estado = $('#combo-estados option:selected');
+        let country = $('#country option:selected').text();
 
-        if (estado.hasClass('norte')) {
-            $('#aviso-frete').removeClass('d-block')
-            $('#aviso-frete').addClass('d-none')
-            $('#valor-frete').text('R$ 95,99');
-        } else if (estado.hasClass('nordeste')) {
-            $('#aviso-frete').removeClass('d-block')
-            $('#aviso-frete').addClass('d-none')
-            $('#valor-frete').text('R$ 75,99');
-        } else if (estado.hasClass('centro-oeste')) {
-            $('#aviso-frete').removeClass('d-block')
-            $('#aviso-frete').addClass('d-none')
-            $('#valor-frete').text('R$ 55,95');
-        } else if (estado.hasClass('sudeste')) {
-            $('#aviso-frete').removeClass('d-block')
-            $('#aviso-frete').addClass('d-none')
-            $('#valor-frete').text('R$ 35,99');
-        } else if (estado.hasClass('sul')) {
-            $('#aviso-frete').addClass('d-none')
+        if (country === "Selecione") {
+            $('#aviso-frete').addClass('d-block');
+        } else if (country === "Brasil") {
             $('#valor-frete').text('GRÁTIS!!!');
+            $('#aviso-frete').addClass('d-none');
         } else {
-            if ($('#aviso-frete').hasClass('d-none')) {
-                $('#aviso-frete').removeClass('d-block')
-                $('#aviso-frete').removeClass('d-none')
-            }
+            $('#aviso-frete').removeClass('d-block');
+            $('#aviso-frete').addClass('d-none');
+            $('#valor-frete').text('R$ 150.00');
         }
     });
 
@@ -103,39 +108,35 @@ $(function () {
         window.location.href = "frete.html";
     });
 
-    //ENVIAR COMENTARIO
-    $('#sendReview').click(function (e) {
-        e.preventDefault();
-        let titulo = $('#tituloAv').val();
-        let comentario = $('#comentariosAv').val();
-        let apelido = $('#apelidoAv').val();
-        let local = $('#localAv').val();
-        let geral = $("#recomendacao input:checked").val();
-        if (titulo !== "" || comentario !== "" || apelido !== ""
-            || local !== "" || geral === undefined) {
-            $('#apelidoCom').text(apelido);
-            $('#localCom').text(local);
-            $('#tituloCom').text(titulo);
-            $('#comentario').text(comentario);
-            $('#geralCom').text(geral);
-
-            $('#tituloAv').val("");
-            $('#comentariosAv').val("");
-            $('#apelidoAv').val("");
-            $('#localAv').val("");
-            $('#geralAv').val("");
-
-            $('#classificao-produto').addClass('d-block');
-            $('#modalFormAvaliacao').modal('hide');
-        } else {
-            alert("Preencha os campos obrigatórios!");
-        }
-
-    });
-
     $('#ul-classificacao li').click(function (e) {
         $(this).addClass('yellow');
     });
 
 
 })
+
+function saveUpload(urlDestino) {
+    debugger;
+    var formData = new FormData($('#frm')[0]);
+    $.ajax({
+        type: $('#frm').attr('method'),
+        url: $('#frm').attr('action'),
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function () {
+            swal({
+                title: 'Yo ho ho!',
+                text: 'Registro salvo com sucesso!',
+                type: 'success'
+            }, () => {
+                window.location.reload();
+            });
+        },
+        error: function () {
+            swal('Avast ye!', 'Não foi possível salvar registro!', 'error');
+        },
+    });
+}

@@ -1,10 +1,5 @@
 /* OVERRIDES */
 
-.breadcrumb-item::before {
-    content: ">" !important;
-    cursor: default !important;
-    text-decoration: none !important;
-}
 
 .breadcrumb-item:first-child::before {
     content: "" !important;
@@ -70,7 +65,7 @@
 }
 
 #fav {
-    cursor: pointer !;
+    cursor: pointer !important;
 }
 
 #fav:hover {

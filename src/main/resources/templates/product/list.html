@@ -17,7 +17,8 @@
             </div>
             <div class="row">
                 <div class="col-xs-4">
-                    <a class="btn btn-primary text-light" id="btn-new-form" data-toggle="modal" data-target="#modal-form">
+                    <a class="btn btn-primary text-light" id="btn-new-form" data-toggle="modal"
+                       data-target="#modal-form">
                         <i class="fa fa-plus-square"></i> Novo Produto
                     </a>
                 </div>
@@ -129,14 +130,12 @@
                                 </select>
                             </div>
 
+                            <!-- Imagem -->
                             <div class="form-group">
-                                <label for="rating">Nota*</label>
-                                <input type="number" class="form-control" id="rating" name="rating" step="0.1"/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="attachments">Anexos:</label>
-                                <input type="file" name="attachments" id="attachments" required class="form-control" multiple/>
+                                <label for="attachments">Fotos:</label>
+                                <input type="file" name="attachments" id="attachments"
+                                       multiple
+                                       required class="form-control"/>
                             </div>
 
                         </div>
@@ -146,7 +145,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-hidden="true">
                         <i class="fa fa-cancel"></i> Cancelar
                     </button>
-                    <button class="btn btn-success" type="button" onClick="save('/product/page')">
+                    <button class="btn btn-success" type="button" onClick="saveUpload('/product/page')">
                         <i class="fa fa-save"></i> Salvar
                     </button>
                 </div>
