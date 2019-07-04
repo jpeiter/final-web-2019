@@ -127,3 +127,11 @@ function editProduct(url) {
     });
     $('#modal-form').modal();
 }
+
+
+function clearForm(e) {
+    e.preventDefault();
+    $('#frm').each(function () {
+        this.reset();
+    });
+}

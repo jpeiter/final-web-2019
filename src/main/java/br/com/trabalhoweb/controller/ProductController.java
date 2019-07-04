@@ -98,25 +98,23 @@ public class ProductController extends CrudController<Product, Long> {
 
     @GetMapping("{prodId}/images")
     public ResponseEntity<?> getProductImages(HttpServletRequest request,
-                                            @PathVariable Long prodId
-                                            ) {
+                                              @PathVariable Long prodId
+    ) {
 
         File dir = new File("C:\\trabalhoweb\\images\\");
         List<File> files = Arrays.asList(dir.listFiles());
 
         List<byte[]> images = new ArrayList<>();
 
-            String name = files.get(0).getName();
-            String sub = name.subSequence(0, prodId.toString().length()).toString();
-            String p = prodId.toString();
-            if (files.get(0).getName().subSequence(0, prodId.toString().length()).equals(prodId.toString())) {
+        for (File file : files) {
+            if (file.getName().subSequence(0, prodId.toString().length()).equals(prodId.toString())) {
                 try {
-                    images.add(Files.readAllBytes(files.get(0).toPath()));
+                    images.add(Files.readAllBytes(file.toPath()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-
+        }
 
 
         return new ResponseEntity<>(images, HttpStatus.OK);
