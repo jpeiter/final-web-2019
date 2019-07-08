@@ -1,34 +1,44 @@
-let shippingPrice;
+let prodId;
+let shippingCountry;
+let name;
+let price;
 let quantity;
 
 $(document).ready(function () {
-    const prodId = $('h1').attr('prodId');
-    // const url = `/product/images`;
-    debugger;
-    let result;
+    let favoritado = localStorage.getItem('favoritado');
 
+    if (favoritado === 'true') {
+
+        $('#fav').removeClass('fa-heart-o');
+        $('#fav').removeClass('yellow');
+        $('#fav').addClass('fa-heart');
+        $('#fav').addClass('red');
+    } else {
+        $('#fav').removeClass('fa-heart');
+        $('#fav').removeClass('red');
+        $('#fav').addClass('fa-heart-o');
+        $('#fav').addClass('yellow');
+    }
+
+    prodId = Number($('h1').attr('prodId'));
+    name = $('#prodName').text();
+    price = Number($('#price').attr('prodPrice'));
 
     $.ajax({
         url: '/product/' + prodId + '/images',
         method: 'GET',
         success: function (data, status) {
             console.log("Status: " + status);
-            $('#foto-grande').attr('src', 'data:image/png;base64, '+ data);
+            $('#foto-grande').attr('src', 'data:image/png;base64, ' + data);
             result = data;
-            debugger;
         },
         error: (e) => alert('errou' + String().valueOf(this.url))
-
     });
+
+
 });
 
 $(function () {
-
-//TROCAR FOTO PELA MINIATURA CLICADA
-    $('.foto-menor-li').click(function () {
-        let imgSrc = $(this).children().attr('src');
-        $('#foto-grande').attr('src', imgSrc.replace("-mini", ""));
-    });
 
     //MARCAR PRODUTO COMO FAVORITO
     $('#fav').click(function () {
@@ -43,33 +53,25 @@ $(function () {
 
     //ADICIONAR PRODUTO NO CARRINHO
     $('#btn-add-carrinho').click(function (e) {
-        let qtde = Number($('#qtdeItens').val());
-
         e.preventDefault();
-        if (qtde >= 1) {
-            $('#nitens').text(qtde);
-            localStorage.setItem('itensCarrinho', qtde);
 
-            let nome = $('#nome-produto').text();
-            let preco = Number($('h1').attr('prodPrice'));
-            let valorFrete = $('#valor-frete').text();
-            let frete;
+        quantity = Number($('#qtdeItens').val());
 
-            if (valorFrete === "" || valorFrete === "GRÁTIS!!!") {
-                frete = 0;
-            } else {
-                frete = parseFloat($('#valor-frete').text().replace("R$ ", "").replace(",", "."));
-            }
+        if (quantity >= 1 && quantity <= 10) {
 
-            let infosProduto = {
-                'nome': nome,
-                'preco': preco,
-                'qtde': qtde,
-                'valorfrete': frete
+            let newProd = {
+                'id': prodId,
+                'price': price,
+                'quantity': quantity
             };
-            localStorage.setItem('infosProduto', JSON.stringify(infosProduto));
-            alert($('#qtdeItens').val() + " iten(s) adicionados ao carrinho!");
+            addToCart(newProd);
+            let totalItems = getCartQuantity();
+            $('#nitens').text(totalItems);
+            alert(`${newProd.quantity} iten(s) adicionados ao carrinho!`);
+        } else {
+            alert('A quantidade deve ser pelo menos 1 e no máximo 10!');
         }
+
     });
 
     //SELECIONAR QUANTIDADES
@@ -86,57 +88,45 @@ $(function () {
     });
 
 
-    //CALCULAR VALOR DO FRETE BASEADO POR REGIÃO
     $('#calc-frete').click(function (e) {
         e.preventDefault();
         let country = $('#country option:selected').text();
 
         if (country === "Selecione") {
             $('#aviso-frete').addClass('d-block');
+            return;
         } else if (country === "Brasil") {
             $('#valor-frete').text('GRÁTIS!!!');
             $('#aviso-frete').addClass('d-none');
+            shippingPrice = 0.0;
         } else {
             $('#aviso-frete').removeClass('d-block');
             $('#aviso-frete').addClass('d-none');
             $('#valor-frete').text('R$ 150.00');
+            shippingPrice = 150.0;
         }
+        shippingCountry = $('#country option:selected').val();
+        localStorage.setItem('shippingCountry ', shippingCountry);
     });
-
-    $("#btn-comprar").click(function (e) {
-        e.preventDefault();
-        window.location.href = "frete.html";
-    });
-
-    $('#ul-classificacao li').click(function (e) {
-        $(this).addClass('yellow');
-    });
-
 
 })
 
-function saveUpload(urlDestino) {
-    debugger;
-    var formData = new FormData($('#frm')[0]);
-    $.ajax({
-        type: $('#frm').attr('method'),
-        url: $('#frm').attr('action'),
-        data: formData,
-        async: false,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function () {
-            swal({
-                title: 'Yo ho ho!',
-                text: 'Registro salvo com sucesso!',
-                type: 'success'
-            }, () => {
-                window.location.reload();
-            });
-        },
-        error: function () {
-            swal('Avast ye!', 'Não foi possível salvar registro!', 'error');
-        },
-    });
+
+function addToCart(product) {
+    if (localStorage.getItem('cart') === null) {
+        localStorage.setItem('cart', JSON.stringify([product]));
+    } else {
+        let localCart = JSON.parse(localStorage.getItem('cart'));
+
+        localCart.forEach(x => {
+            if (x.id === product.id) {
+                x.quantity += product.quantity;
+            } else {
+                localCart.push(product);
+            }
+        });
+
+
+        localStorage.setItem('cart', JSON.stringify(localCart));
+    }
 }

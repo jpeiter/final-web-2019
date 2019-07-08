@@ -25,12 +25,16 @@
             <!-- FIM FOTOS -->
 
             <!-- INFOS -->
-            <div class="card w-auto px-3 py-2 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12" id="infos-produto">
-                <h1 th:text="${product.name}" th:prodId="${product.id}"></h1>
+            <div class="card w-auto py-2 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12" id="infos-produto">
+                <h1 th:text="${product.name}" th:prodId="${product.id}" id="prodName"></h1>
 
                 <ul class="list-inline mt-0" id="ul-rating">
+                    <li>
+                        <h5 class="font-weight-light float-left"
+                            th:text="${product.brand.name} + ' ('+ ${product.brand.country.name} +')'"></h5>
+                    </li>
                     <li class="list-inline-item">
-                        <h4 class="font-weight-light" th:text="${product.brand.name}"></h4>
+                        <h6 class="font-weight-light" th:text="${product.description}"></h6>
                     </li>
                     <li class="list-inline-item float-right">
                         <div>
@@ -43,7 +47,7 @@
 
                 <div>
                     <h1 class="font-weight-normal mt-0" th:text="'R$ '+${product.price}"
-                        th:prodPrice="${product.price}"></h1>
+                        th:prodPrice="${product.price}" id="price"></h1>
 
                     <span class="d-none red" id="aviso-vendas">Para comprar grandes quantidade entre em contato com
                         nosso setor de vendas!</span>

@@ -72,13 +72,14 @@ public class UserController extends CrudController<User, Long> {
             return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
 
-        if (!usuarioService.findOne(entity.getId()).getPassword().equals(entity.getPassword())
-                || entity.getPassword() != null) {
-            entity.setPassword(
-                    entity.getEncodedPassword(
-                            entity.getPassword()
-                    )
-            );
+        if (entity.getId() != null) {
+            if (!usuarioService.findOne(entity.getId()).getPassword().equals(entity.getPassword()) || entity.getPassword() != null) {
+                entity.setPassword(
+                        entity.getEncodedPassword(
+                                entity.getPassword()
+                        )
+                );
+            }
         }
 
         getService().save(entity);

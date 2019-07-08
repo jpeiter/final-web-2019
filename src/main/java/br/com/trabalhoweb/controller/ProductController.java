@@ -98,8 +98,7 @@ public class ProductController extends CrudController<Product, Long> {
 
     @GetMapping("{prodId}/images")
     public ResponseEntity<?> getProductImages(HttpServletRequest request,
-                                              @PathVariable Long prodId
-    ) {
+                                              @PathVariable Long prodId) {
 
         File dir = new File("C:\\trabalhoweb\\images\\");
         List<File> files = Arrays.asList(dir.listFiles());
@@ -115,7 +114,6 @@ public class ProductController extends CrudController<Product, Long> {
                 }
             }
         }
-
 
         return new ResponseEntity<>(images, HttpStatus.OK);
     }
@@ -158,7 +156,6 @@ public class ProductController extends CrudController<Product, Long> {
             saveFile(entity.getId(), anexos, request);
         }
         return new ResponseEntity<>(HttpStatus.OK);
-
     }
 
     private void saveFile(Long id, MultipartFile[] anexos, HttpServletRequest request) {

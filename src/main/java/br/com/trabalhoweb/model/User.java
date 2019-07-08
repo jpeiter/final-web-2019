@@ -42,7 +42,7 @@ public class User implements Serializable, UserDetails {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @JsonIgnore
+//    @JsonIgnore
     public Set<Role> getRoles() {
         return roles;
     }

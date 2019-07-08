@@ -74,7 +74,6 @@ function savePurchase() {
                 type: 'success'
             }, () => {
                 window.location = 'page';
-
             });
         },
         error: function () {

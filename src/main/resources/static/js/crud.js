@@ -51,7 +51,7 @@ function save(urlDestino) {
                 type: 'success'
             }, () => {
                 clearForm();
-                window.location = urlDestino;
+                window.location.reload();
             });
         },
         error: function () {
@@ -60,31 +60,6 @@ function save(urlDestino) {
     });
 }
 
-function saveUpload(urlDestino) {
-    var formData = new FormData($('#frm')[0]);
-    $.ajax({
-        type: $('#frm').attr('method'),
-        url: $('#frm').attr('action'),
-        data: formData,
-        async: false,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function () {
-            swal({
-                title: 'Salvo!',
-                text: 'Registro salvo com sucesso!',
-                type: 'success'
-            }, () => {
-                clearForm();
-                window.location = urlDestino;
-            });
-        },
-        error: function () {
-            swal('Errou!', 'Falha ao salvar registro!', 'error');
-        },
-    });
-}
 
 function edit(url) {
     $.get(url, function (entity, status) {
@@ -104,6 +79,7 @@ function editBrand(url) {
 }
 
 function editSupplier(url) {
+    clearForm(event);
     $.get(url, function (entity, status) {
         $('#id').val(entity.id);
         $('#name').val(entity.name);
@@ -129,9 +105,35 @@ function editProduct(url) {
 }
 
 
-function clearForm(e) {
-    e.preventDefault();
+function clearForm() {
     $('#frm').each(function () {
         this.reset();
+    });
+    $('#modal-form').modal('dispose');
+}
+
+
+function saveUpload(urlDestino) {
+    var formData = new FormData($('#frm')[0]);
+    $.ajax({
+        type: $('#frm').attr('method'),
+        url: $('#frm').attr('action'),
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function () {
+            swal({
+                title: 'Yo ho ho!',
+                text: 'Registro salvo com sucesso!',
+                type: 'success'
+            }, () => {
+                window.location.reload();
+            });
+        },
+        error: function () {
+            swal('Avast ye!', 'Não foi possível salvar registro!', 'error');
+        },
     });
 }

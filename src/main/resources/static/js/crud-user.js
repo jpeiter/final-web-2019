@@ -1,4 +1,4 @@
-function clearForm() {
+function clearFormUser() {
     $('#id').val('');
     $('#name').val('');
     $('#username').val('');
@@ -9,7 +9,7 @@ function clearForm() {
 }
 
 function editUser(url) {
-    clearForm();
+    clearFormUser();
     $.get(url, function (entity, status) {
         $('#id').val(entity.id);
         $('#name').val(entity.name);
