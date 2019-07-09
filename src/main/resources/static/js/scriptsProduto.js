@@ -62,7 +62,8 @@ $(function () {
             let newProd = {
                 'id': prodId,
                 'price': price,
-                'quantity': quantity
+                'quantity': quantity,
+                'imagesrc': $('#foto-grande').attr('src')
             };
             addToCart(newProd);
             let totalItems = getCartQuantity();
@@ -118,13 +119,17 @@ function addToCart(product) {
     } else {
         let localCart = JSON.parse(localStorage.getItem('cart'));
 
+        let ids = [];
         localCart.forEach(x => {
             if (x.id === product.id) {
                 x.quantity += product.quantity;
-            } else {
-                localCart.push(product);
             }
+            ids.push(x.id);
         });
+
+        if(ids.indexOf(product.id) === -1){
+            localCart.push(product);
+        }
 
 
         localStorage.setItem('cart', JSON.stringify(localCart));

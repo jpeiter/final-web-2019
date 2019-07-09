@@ -9,22 +9,8 @@
     <title layout:fragment="title">Ahoy! | Home</title>
 </head>
 <body>
-<div sec:authorize="hasRole('ROLE_USER')">
-    <section layout:fragment="conteudo_user">
-        <img src="https://placekitten.com/200/300">
-    </section>
-</div>
-<div sec:authorize="hasRole('ROLE_ADMIN')">
-    <section layout:fragment="conteudo">
-        <span class="text-gold bg-brown">Conteúdo aqui</span>
-        As págias serão carregadas aqui...
-        <img th:src="@{/images/logovertical.png}" width="129" height="150" alt="Ahoy!">
-        <img th:src="@{/images/logovertical.png}" width="129" height="150" alt="Ahoy!">
-        <img th:src="@{/images/logovertical.png}" width="129" height="150" alt="Ahoy!">
-        <img th:src="@{/images/logovertical.png}" width="129" height="150" alt="Ahoy!">
-        <img th:src="@{/images/logovertical.png}" width="129" height="150" alt="Ahoy!">
-    </section>
-</div>
-
+<section layout:fragment="conteudo">
+    <img src="https://placekitten.com/200/300">
+</section>
 </body>
 </html>
