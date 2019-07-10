@@ -1,0 +1,54 @@
+#form-head {
+    border-top-left-radius: 2rem !important;
+    border-top-right-radius: 2rem !important;
+}
+
+#form-body {
+    border-left: 2px #38312bb2 solid !important;
+    border-right: 2px #38312b solid !important;
+    background-color: #25201c !important;
+}
+
+#form-tail {
+    border-bottom-left-radius: 2rem !important;
+    border-bottom-right-radius: 2rem !important;
+    bottom: 0 !important;
+}
+
+#btn-login, #btn-cadastro {
+    color: #030303 !important;
+    line-height: 3rem !important;
+    background: #ffd900 !important;
+}
+
+#pills-tab a {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+    width: 20em !important;
+    color: #f7f7f7 !important;
+    font-weight: bold !important;
+    border: transparent 3px solid !important;
+    margin-left: 1rem !important;
+}
+
+#pills-tab a:not(.active):hover {
+    color: #ffd900 !important;
+    border: #ffd900 3px solid !important;
+}
+
+#pills-tab li a.active {
+    background-color: transparent !important;
+    border-bottom: 3px #ffd900 solid !important;
+    color: #ffd900 !important;
+}
+
+#btn-login, #btn-cadastro {
+    border: 2px transparent solid !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+}
+
+.error-message {
+    color: red !important;
+    float: left !important;
+}

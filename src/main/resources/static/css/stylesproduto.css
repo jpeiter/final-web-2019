@@ -1,0 +1,151 @@
+/* OVERRIDES */
+
+
+.breadcrumb-item:first-child::before {
+    content: "" !important;
+}
+
+.card-header, .card-footer {
+    border: none !important;
+}
+
+.form-check input, .form-check label {
+    cursor: pointer !important;
+}
+
+/* FIM OVERRIDES */
+
+#foto-grande {
+    max-height: 450px !important;
+}
+
+.foto-menor-li {
+    border: transparent 1px solid !important;
+    cursor: pointer !important;
+}
+
+.foto-menor {
+    max-width: 75px !important;
+}
+
+#fotos-produto, #infos-produto {
+    border: none !important;
+}
+
+#ul-rating li, .foto-menor-li {
+    margin-right: 0 !important;
+}
+
+#ul-rating li img:hover {
+    cursor: pointer !important;
+}
+
+#preco-desconto::before {
+    text-decoration: none !important;
+    font-weight: normal !important;
+    content: "De: " !important;
+}
+
+#preco-desconto {
+    text-decoration: line-through !important;
+}
+
+#preco::before {
+    font-size: 40% !important;
+    font-weight: normal !important;
+    content: "Por: " !important;
+}
+
+#preco::after {
+    color: #28a745 !important;
+    font-weight: normal !important;
+    font-size: 50% !important;
+    vertical-align: 35% !important;
+    content: " (-20%!)" !important;
+}
+
+#fav {
+    cursor: pointer !important;
+}
+
+#fav:hover {
+    cursor: pointer !important;
+}
+
+#fabricante::before {
+    font-size: 50% !important;
+    content: "by " !important;
+}
+
+#h6-boleto::after {
+    font-size: 75% !important;
+    content: " - Compra aprovada entre 1 e 2 dias após pagamento" !important;
+}
+
+#h6-cartao::after {
+    font-size: 75% !important;
+    content: " - Aprovação imediata!" !important;
+}
+
+#h6-frete-expresso::after {
+    font-size: 75% !important;
+    content: " - Chegará até ás 10h do dia seguinte à aprovacão!" !important;
+}
+
+#h6-frete-normal::after {
+    font-size: 75% !important;
+    content: " - Chegará entre 6 e 7 dias úteis após à aprovacão!" !important;
+}
+
+#btn-comprar {
+    background-color: #28a745 !important;
+    line-height: 200% !important;
+    font-size: 200% !important;
+}
+
+#btn-comprar:hover {
+    color: #ffffff !important;
+}
+
+#descs-produto {
+    border: none !important;
+}
+
+#pills-tabContent {
+    border-top: #ccc 1px solid !important;
+}
+
+#pills-tabContent .tab-pane h2 {
+    margin-top: 1rem !important;
+}
+
+#pills-tab a:not(.active) {
+    color: #38312b !important;
+}
+
+#pills-tab a:hover {
+    font-weight: 600 !important;
+}
+
+#valor-frete {
+    color: #f00 !important;
+    font-weight: bold !important;
+    font-size: 150% !important;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #38312b !important;
+    color: #FDE028 !important;
+}
+
+.form-row {
+    padding-top: 3% !important;
+}
+
+#formAvaliacoes label {
+    font-weight: 600 !important;
+}
+
+#ul-classificacao li {
+    cursor: pointer !important;
+}

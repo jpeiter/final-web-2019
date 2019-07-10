@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <script type="text/javascript" th:src="@{/js/scriptsProduto.js}"></script>
+    <title layout:fragment="title" th:text="'Ahoy! | '+${product.name}"></title>
+    <link rel="stylesheet" th:href="@{/css/stylesproduto.css}">
+</head>
+
+<!--xmlns:sec="http://www.thymeleaf.org/extras/spring-security"-->
+<body>
+<section layout:fragment="conteudo">
+    <!--<div sec:authorize="hasRole('ROLE_USER')">-->
+    <main class="container-fluid" id="main" style="margin-top: 150px !important;">
+
+        <div class="row justify-content-center w-100">
+            <!-- FOTOS -->
+            <div class="card w-auto col-md-6" id="fotos-produto">
+
+                <div class="card-body">
+                    <div class="bg-transparent" id="container-foto">
+                        <img class="" id="foto-grande" width="350">
+                    </div>
+                </div>
+            </div>
+            <!-- FIM FOTOS -->
+
+            <!-- INFOS -->
+            <div class="card w-auto py-2 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12" id="infos-produto">
+                <h1 th:text="${product.name}" th:prodId="${product.id}" id="prodName"></h1>
+
+                <ul class="list-inline mt-0" id="ul-rating">
+                    <li>
+                        <h5 class="font-weight-light float-left"
+                            th:text="${product.brand.name} + ' ('+ ${product.brand.country.name} +')'"></h5>
+                    </li>
+                    <li class="list-inline-item">
+                        <h6 class="font-weight-light" th:text="${product.description}"></h6>
+                    </li>
+                    <li class="list-inline-item float-right">
+                        <div>
+                            <i class="fa fa-heart-o big-icon yellow" id="fav"></i>
+                        </div>
+
+                    </li>
+                </ul>
+
+
+                <div>
+                    <h1 class="font-weight-normal mt-0" th:text="'R$ '+${product.price}"
+                        th:prodPrice="${product.price}" id="price"></h1>
+                    <span class="d-none red" id="aviso-qtde-zero">Adicione pelo menos 1 item ao carrinho!</span>
+                    <div class="form-group row">
+                        <div class="col-lg-1 col-md-6 col-sm-6 col-xl-5 input-group ">
+                            <input type="number" id="qtdeItens" class="form-control w-50" min="1"
+                                   placeholder="Quantidade"/>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xl-6 input-group ">
+                            <input type="submit" value="ADICIONAR AO CARRINHO" id="btn-add-carrinho"
+                                   class="btn btn-warning text-dark font-weight-bold "/>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- PAGAMENTOS -->
+                <div>
+                    <!-- FRETE -->
+                    <div id="infos-frete">
+                        <h4 class="text-dark mt-3">Frete grátis para todo o Brasil!</h4>
+                        <span class="d-none red my-0 position-static" id="aviso-frete">Selecione um estado para
+                        calcular o frete!</span>
+                        <div class="form-group row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xl-6 input-group">
+                                <select id="country" name="country" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <option th:each="country : ${countries}"
+                                            th:value="${country.id}"
+                                            th:code="${country.code}"
+                                            th:text="${country.name}"></option>
+                                </select>
+                                <div class="col-lg-3 col-md-3 col-sm-3 ">
+                                    <input type="submit" value="CALCULAR FRETE"
+                                           class="btn btn-warning text-dark font-weight-bold"
+                                           id="calc-frete"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ml-1 mt-0">
+                            <p class="mt-0 mb-3">Valor do frete: <span id="valor-frete"></span></p>
+                        </div>
+
+                    </div>
+                    <!-- FIM  FRETE -->
+
+                    <div class="form-group row w-100">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 input-group ">
+                            <div class="w-100">
+                                <button id="btn-comprar" class="btn text-light w-100">COMPRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIM INFOS -->
+            </div>
+        </div>
+    </main>
+    <!--</div>-->
+
+</section>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <script type="text/javascript" th:src="@{/js/scriptsFrete.js}"></script>
+</head>
+<title layout:fragment="title">Ahoy! | Navio de Compras</title>
+
+<body>
+<section layout:fragment="conteudo">
+    <div class="page-header">
+        <div class="">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-xs-8">
+                    <h2>Seu Navio de Compras:</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <table class="table table-dark table-striped table-bordered table-hover" id="cart-table">
+                    <thead>
+                    <tr class="text-center">
+                        <th scope="col" colspan="2">Produto</th>
+                        <th scope="col" colspan="1">Quantidade</th>
+                        <th scope="col">Valor Un.</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row justify-content-end mr-5">
+                <div class="justify-content-center align-items-center">
+                    <h5 id="shippingPriceh5">Frete:</h5>
+                </div>
+            </div>
+            <div class="row justify-content-end mr-5">
+
+                <div class="justify-content-center align-items-center">
+                    <h3 id="overallPrice">Total:</h3>
+                </div>
+            </div>
+            <div class="row justify-content-center my-3">
+                <button type="button" class="btn btn-success" style="font-size: 30px" onclick="buy()">CONFIRMAR COMPRA
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
