@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -31,8 +30,7 @@ public class ClientPurchase implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Preencha o campo data!")
-    @Column(name = "date", nullable = false)
+    @Column(name = "date")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate date;
 
@@ -42,10 +40,9 @@ public class ClientPurchase implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "country_id", referencedColumnName = "id")
-    @NotNull(message = "Informe o país de envio!")
     private Country country;
 
-    @Column(name = "shipping_price", nullable = false)
+    @Column(name = "shipping_price")
     private BigDecimal shippingPrice;
 
     @OneToMany(mappedBy = "clientPurchase", fetch = FetchType.LAZY)

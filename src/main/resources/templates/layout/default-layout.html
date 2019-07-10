@@ -108,14 +108,11 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ">
 
-                                <li class="nav-item mx-3">
-                                    <a class="nav-link text-gold" href="">Contato</a>
-                                </li>
 
                                 <li class="nav-item mx-1">
                                     <span>
                                         <a th:href="@{/buy/cart}">
-                                            <i class="fa fa-shopping-cart big-icon" title="Meu carrinho"
+                                            <i class="fa fa-ship big-icon" title="Meu carrinho"
                                                id="carrinho"></i>
                                         </a>
                                         <span class="badge rounded-circle " id="nitens"></span>
@@ -139,11 +136,15 @@
         </header>
         <!-- FIM NAVBAR -->
 
-        <!-- INÍCIO CONTEÚDO ADMIN-->
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <section class="ut-layout-content" layout:fragment="conteudo">
+        <!--&lt;!&ndash; INÍCIO CONTEÚDO ADMIN&ndash;&gt;-->
+        <!--<div sec:authorize="hasRole('ROLE_USER')">-->
+            <!--<section class="ut-layout-content" layout:fragment="conteudo_user">-->
+            <!--</section>-->
+        <!--</div>-->
+        <!--<div sec:authorize="hasRole('ROLE_ADMIN')">-->
+            <section class="ut-layout-content mt-5" layout:fragment="conteudo">
             </section>
-        </div>
+        <!--</div>-->
         <!-- FIM CONTEÚDO ADMIN-->
 
 
@@ -232,8 +233,6 @@
             </p>
         </footer>
         <!-- FIM FOOTER -->
-
-
 
 
         <script type="text/javascript" th:src="@{/js/crud.js}"></script>

@@ -8,9 +8,12 @@
     <title layout:fragment="title" th:text="'Ahoy! | '+${product.name}"></title>
     <link rel="stylesheet" th:href="@{/css/stylesproduto.css}">
 </head>
+
+<!--xmlns:sec="http://www.thymeleaf.org/extras/spring-security"-->
 <body>
 <section layout:fragment="conteudo">
-    <main class="container-fluid">
+    <!--<div sec:authorize="hasRole('ROLE_USER')">-->
+    <main class="container-fluid" id="main" style="margin-top: 150px !important;">
 
         <div class="row justify-content-center w-100">
             <!-- FOTOS -->
@@ -18,7 +21,7 @@
 
                 <div class="card-body">
                     <div class="bg-transparent" id="container-foto">
-                        <img class="" id="foto-grande" width="450" height="450">
+                        <img class="" id="foto-grande" width="350">
                     </div>
                 </div>
             </div>
@@ -48,15 +51,11 @@
                 <div>
                     <h1 class="font-weight-normal mt-0" th:text="'R$ '+${product.price}"
                         th:prodPrice="${product.price}" id="price"></h1>
-
-                    <span class="d-none red" id="aviso-vendas">Para comprar grandes quantidade entre em contato com
-                        nosso setor de vendas!</span>
                     <span class="d-none red" id="aviso-qtde-zero">Adicione pelo menos 1 item ao carrinho!</span>
                     <div class="form-group row">
                         <div class="col-lg-1 col-md-6 col-sm-6 col-xl-5 input-group ">
                             <input type="number" id="qtdeItens" class="form-control w-50" min="1"
-                                   placeholder="Quantidade"
-                                   max="10"/>
+                                   placeholder="Quantidade"/>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xl-6 input-group ">
                             <input type="submit" value="ADICIONAR AO CARRINHO" id="btn-add-carrinho"
@@ -78,7 +77,7 @@
                                     <option value="">Selecione</option>
                                     <option th:each="country : ${countries}"
                                             th:value="${country.id}"
-                                            th:countryId="${country.id}"
+                                            th:code="${country.code}"
                                             th:text="${country.name}"></option>
                                 </select>
                                 <div class="col-lg-3 col-md-3 col-sm-3 ">
@@ -107,6 +106,7 @@
             </div>
         </div>
     </main>
+    <!--</div>-->
 
 </section>
 </body>

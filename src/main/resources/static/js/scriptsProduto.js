@@ -20,7 +20,7 @@ $(document).ready(function () {
         $('#fav').addClass('yellow');
     }
 
-    prodId = Number($('h1').attr('prodId'));
+    prodId = location.toString().split('/').reverse()[0];
     name = $('#prodName').text();
     price = Number($('#price').attr('prodPrice'));
 
@@ -57,10 +57,11 @@ $(function () {
 
         quantity = Number($('#qtdeItens').val());
 
-        if (quantity >= 1 && quantity <= 10) {
+        if (quantity >= 1) {
 
             let newProd = {
                 'id': prodId,
+                'name': name,
                 'price': price,
                 'quantity': quantity,
                 'imagesrc': $('#foto-grande').attr('src')
@@ -70,23 +71,11 @@ $(function () {
             $('#nitens').text(totalItems);
             alert(`${newProd.quantity} iten(s) adicionados ao carrinho!`);
         } else {
-            alert('A quantidade deve ser pelo menos 1 e no máximo 10!');
+            alert('A quantidade deve ser pelo menos 1!');
         }
 
     });
 
-    //SELECIONAR QUANTIDADES
-    $('#qtdeItens').on('input', () => {
-        if ($('#qtdeItens').val() == 10) {
-            $('#aviso-vendas').addClass('d-block');
-            $('#aviso-vendas').removeClass('d-none');
-        } else {
-            $('#aviso-qtde-zero').addClass('d-none');
-            $('#aviso-qtde-zero').removeClass('d-block');
-            $('#aviso-vendas').addClass('d-none');
-            $('#aviso-vendas').removeClass('d-block');
-        }
-    });
 
 
     $('#calc-frete').click(function (e) {
@@ -106,8 +95,8 @@ $(function () {
             $('#valor-frete').text('R$ 150.00');
             shippingPrice = 150.0;
         }
-        shippingCountry = $('#country option:selected').val();
-        localStorage.setItem('shippingCountry ', shippingCountry);
+        shippingCountry = $('#country option:selected').attr('code');
+        localStorage.setItem('shippingCountry', JSON.stringify({id: Number($('#country option:selected').val()), code: shippingCountry}));
     });
 
 })
@@ -130,7 +119,6 @@ function addToCart(product) {
         if(ids.indexOf(product.id) === -1){
             localCart.push(product);
         }
-
 
         localStorage.setItem('cart', JSON.stringify(localCart));
     }
