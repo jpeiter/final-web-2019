@@ -1,6 +1,8 @@
 package br.com.trabalhoweb.controller;
 
 import br.com.trabalhoweb.model.User;
+import br.com.trabalhoweb.repository.RoleRepository;
+import br.com.trabalhoweb.repository.UserRepository;
 import br.com.trabalhoweb.service.CrudService;
 import br.com.trabalhoweb.service.RoleService;
 import br.com.trabalhoweb.service.UserService;
@@ -10,12 +12,15 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,14 +31,20 @@ import java.util.stream.IntStream;
 public class UserController extends CrudController<User, Long> {
 
     @Autowired
-    private UserService usuarioService;
+    private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     @Override
     protected CrudService<User, Long> getService() {
-        return this.usuarioService;
+        return this.userService;
     }
 
     @Override
@@ -73,7 +84,7 @@ public class UserController extends CrudController<User, Long> {
         }
 
         if (entity.getId() != null) {
-            if (!usuarioService.findOne(entity.getId()).getPassword().equals(entity.getPassword()) || entity.getPassword() != null) {
+            if (!userService.findOne(entity.getId()).getPassword().equals(entity.getPassword()) || entity.getPassword() != null) {
                 entity.setPassword(
                         entity.getEncodedPassword(
                                 entity.getPassword()
@@ -81,7 +92,6 @@ public class UserController extends CrudController<User, Long> {
                 );
             }
         }
-
         getService().save(entity);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -107,5 +117,23 @@ public class UserController extends CrudController<User, Long> {
             modelAndView.addObject("pageNumbers", pageNumbers);
         }
         return modelAndView;
+    }
+
+    @PostMapping("signin")
+    public ResponseEntity<?> signin(@RequestParam("name") String name,
+                                    @RequestParam("username") String username,
+                                    @RequestParam("password") String password, Model model) {
+        if (userRepository.findByUsername(username) != null) {
+            model.addAttribute("error", "Usuário e/ou senha inválidos!");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        User user = new User();
+        user.setName(name);
+        user.setUsername(username);
+        user.setPassword(user.getEncodedPassword(password));
+        user.setRoles(new HashSet<>(Arrays.asList(roleRepository.findByName("ROLE_USER"))));
+        userService.save(user);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
