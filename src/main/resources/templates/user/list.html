@@ -122,7 +122,7 @@
                         <div class="form-group">
                             <label>Permissões:</label>
                             <div th:each="role: ${roles}">
-                                <input type="checkbox" name="roles" th:id="'chk_' + ${role.id}" th:value="${role.id}" />
+                                <input type="checkbox" name="roles" th:id="'chk_' + ${role.id}" th:value="${role.id}"/>
                                 <label th:for="'chk_' + ${role.id}" th:text="${role.name}"></label>
                             </div>
                         </div>

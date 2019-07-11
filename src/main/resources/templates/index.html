@@ -10,7 +10,30 @@
 </head>
 <body>
 <section layout:fragment="conteudo">
-    <img src="https://placekitten.com/200/300">
+    <div class="container-fluid" id="main" style="padding: 5em 0 !important;">
+        <div class="row">
+            <div class="col-4 product-card" th:each="product: ${products}">
+                <div class="card bg-brown-light">
+                    <div class="card-header m-0 py-3">
+                        <h4 class="text-center">
+                            <a class="font-weight-bold text-gold" th:text="${product.name}"
+                               th:href="'/product/'+${product.id}"></a>
+                        </h4>
+                        <h6 class="text-gold text-center" th:text="${product.brand.name}"></h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="m-1 text-center">
+                            <img class="prod-img w-100" th:prodId="${product.id}" src="">
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <h5 class="text-gold" th:text="'R$ '+ ${product.price}"></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
 </body>
 </html>

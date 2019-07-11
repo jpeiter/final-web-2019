@@ -109,6 +109,7 @@ function addToCart(product) {
         let localCart = JSON.parse(localStorage.getItem('cart'));
 
         let ids = [];
+
         localCart.forEach(x => {
             if (x.id === product.id) {
                 x.quantity += product.quantity;
