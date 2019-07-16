@@ -22,7 +22,6 @@ import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -109,17 +108,21 @@ public class ClientPurchaseController extends CrudController<ClientPurchase, Lon
                         userRepository.findByUsername(principal.getName()).getId()
                 );
 
-        List<BigDecimal> quantities = new ArrayList<>();
+        List<ProductClientPurchase> pcps =
+                productClientPurchaseRepository
+                        .findProductClientPurchaseByClientPurchaseUserId(
+                                userRepository.findByUsername(principal.getName()).getId()
+                        );
 
-        for (ClientPurchase cp : history){
-            for(ProductClientPurchase pcp : cp.getProductClientPurchases()){
-                quantities.add(pcp.getQuantity());
-            }
+        BigDecimal totalAmount = BigDecimal.ZERO;
+
+        for (ProductClientPurchase pcp  : pcps) {
+            totalAmount = totalAmount.add(pcp.getTotalPrice());
         }
 
         ModelAndView modelAndView = new ModelAndView(this.getUrl() + "/history");
         modelAndView.addObject("history", history);
-        modelAndView.addObject("itemsQuantity", quantities);
+        modelAndView.addObject("totalAmount", totalAmount);
         return modelAndView;
     }
 
