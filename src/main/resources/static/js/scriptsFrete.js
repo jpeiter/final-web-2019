@@ -7,6 +7,28 @@ let shippingCountry = JSON.parse(localStorage.getItem('shippingCountry'));
 
 $(document).ready(function () {
 
+    if (!shippingCountry) {
+        swal({
+            title: 'Avast ye!',
+            text: 'Selecione um país antes de finalizar a compra!',
+            type: 'warning'
+        }, () => {
+            location.href = '/home';
+        });
+        return;
+    }
+
+    if (!cartItems || cartItems.length === 0) {
+        swal({
+            title: 'Avast ye!',
+            text: 'Adicione itens ao navio de compras antes de finalizar!',
+            type: 'warning'
+        }, () => {
+            location.href = '/home';
+        });
+        return;
+    }
+
 
     shippingPrice = shippingCountry.code === "BRA" ? 0 : 150;
 
@@ -17,13 +39,15 @@ $(document).ready(function () {
         let totalPrice = item.quantity * item.price;
         productsPrice += totalPrice;
         $('#cart-table > tbody')
-            .append(`<tr class="text-center" id="${item.id}">\n` +
-                `<th scope="row"><img src="${item.imagesrc}" width="100" /></th>` +
+            .append(
+                `<tr class="text-center" id="${item.id}">\n` +
+                `<td><img src="${item.imagesrc}" width="100" /></td>` +
                 `<td>${item.name}</td>` +
                 `<td><input type="number" value="${item.quantity}" id="${i}_quantity"` +
                 `class="prodQuantityInput form-control text-center w-100" min="0"/></td>` +
                 `<td>R$ ${item.price}</td>` +
                 `<td class="total-item-price" id="${i}_price">R$ ${totalPrice}</td>` +
+                `<td><button class="btn btn-danger" onclick="removeFromCart(${item.id})"><i class="fa fa-times"></i></button></td>` +
                 `</tr>`
             );
         productsArray.push({product: {id: item.id}, quantity: item.quantity});
@@ -65,14 +89,13 @@ $(document).ready(function () {
 function buy() {
     let toSave = {
         productClientPurchases: [],
-        country: {},
-        user: {
-            id: 1
+        country: {
+            id: shippingCountry.id
         }
     };
     toSave.productClientPurchases = productsArray.filter(item => item.quantity > 0);
 
-    if(toSave.productClientPurchases.length === 0 ){
+    if (toSave.productClientPurchases.length === 0) {
         swal({
             title: "Avast ye!",
             text: 'A quantidade dos produtos deve ser maior que 0!',
@@ -80,8 +103,6 @@ function buy() {
         });
         return;
     }
-
-    toSave.country.id = shippingCountry.id;
     $.ajax({
         method: 'POST',
         url: '/buy/save',
@@ -95,12 +116,32 @@ function buy() {
             }, () => {
                 localStorage.removeItem('cart');
                 localStorage.removeItem('shippingCountry');
-                window.location = 'home';
+                window.location = '/home';
             });
         },
         error: (e) => {
-            alert('errou' + String().valueOf(this.url));
             console.error(e);
         }
     });
+}
+
+function removeFromCart(itemId) {
+    swal({
+        title: "Blimey!",
+        text: "Deseja mesmo remover esse item do navio de compras?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Remover',
+        cancelButtonText: "Cancelar"
+    }, function (isConfirm) {
+
+        if (isConfirm) {
+            cartItems = cartItems.filter(item => item.id != itemId);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            location.reload();
+        }
+    });
+
+
 }

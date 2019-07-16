@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <title layout:fragment="title">Ahoy! | Usuários</title>
+</head>
+<body>
+<section layout:fragment="conteudo">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-8">
+                    <h2>Suas compras conosco:</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="table-responsive">
+        <table id="tabela-serie"
+               class="table  table-striped  table-bordered  table-hover  table-condensed">
+            <thead class="ut-table-header-solid">
+            <tr>
+                <th>Data</th>
+                <th>Qtde. Produtos (Distintos)</th>
+                <th>Valor Frete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${history.empty}">
+                <td colspan="3"><span>Você ainda não comprou nada!</span></td>
+            </tr>
+            <tr th:id="'row_' + ${purchase.id}" th:each="purchase: ${history}">
+                <td style="width:150px" class="text-center" th:text="${purchase.date}"></td>
+                <td><span th:text="${#lists.size(purchase.productClientPurchases)}"></span></td>
+                <td><span th:text="${purchase.shippingPrice}"></span></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+
+        </nav>
+    </div>
+    <script type="text/javascript" th:src="@{/js/crud-user.js}"></script>
+</section>
+</body>
+</html>

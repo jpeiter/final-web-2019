@@ -1,5 +1,5 @@
 let prodId;
-let shippingCountry;
+let shippingCountry = localStorage.getItem('shippingCountry');
 let name;
 let price;
 let quantity;
@@ -20,7 +20,7 @@ $(document).ready(function () {
         $('#fav').addClass('yellow');
     }
 
-    prodId = location.toString().split('/').reverse()[0];
+    prodId = Number($('#prodName').attr('prodId'));
     name = $('#prodName').text();
     price = Number($('#price').attr('prodPrice'));
 
@@ -30,13 +30,11 @@ $(document).ready(function () {
         success: function (data, status) {
             console.log("Status: " + status);
             $('#foto-grande').attr('src', 'data:image/png;base64, ' + data);
-            result = data;
-        },
-        error: (e) => alert('errou' + String().valueOf(this.url))
+        }
     });
 
-
-});
+})
+;
 
 $(function () {
 
@@ -69,13 +67,20 @@ $(function () {
             addToCart(newProd);
             let totalItems = getCartQuantity();
             $('#nitens').text(totalItems);
-            alert(`${newProd.quantity} iten(s) adicionados ao carrinho!`);
+            swal({
+                title: 'Yo ho ho!',
+                text: `${newProd.quantity} iten(s) adicionados ao carrinho!`,
+                type: 'success'
+            });
         } else {
-            alert('A quantidade deve ser pelo menos 1!');
+            swal({
+                title: 'Avast ye!',
+                text: 'A quantidade deve ser maior que zero!',
+                type: 'warning'
+            });
         }
 
     });
-
 
 
     $('#calc-frete').click(function (e) {
@@ -96,7 +101,10 @@ $(function () {
             shippingPrice = 150.0;
         }
         shippingCountry = $('#country option:selected').attr('code');
-        localStorage.setItem('shippingCountry', JSON.stringify({id: Number($('#country option:selected').val()), code: shippingCountry}));
+        localStorage.setItem('shippingCountry', JSON.stringify({
+            id: Number($('#country option:selected').val()),
+            code: shippingCountry
+        }));
     });
 
 })
@@ -117,10 +125,45 @@ function addToCart(product) {
             ids.push(x.id);
         });
 
-        if(ids.indexOf(product.id) === -1){
+        if (ids.indexOf(product.id) === -1) {
             localCart.push(product);
         }
 
         localStorage.setItem('cart', JSON.stringify(localCart));
+    }
+}
+
+function buy1Click() {
+    if (!shippingCountry) {
+        swal({
+            title: 'Avast ye!',
+            text: 'Selecione um país antes de finalizar a compra!',
+            type: 'warning'
+        });
+    } else if (Number($('#qtdeItens').val()) <= 0 && getCartQuantityByProductId(prodId) == 0) {
+        swal({
+            title: 'Avast ye!',
+            text: 'Selecione a quantidade!',
+            type: 'warning'
+        });
+    } else {
+        if (Number($('#qtdeItens').val()) !== 0) {
+            addToCart({
+                'id': prodId,
+                'name': name,
+                'price': price,
+                'quantity': Number($('#qtdeItens').val()),
+                'imagesrc': $('#foto-grande').attr('src')
+            });
+        }else if(getCartQuantityByProductId(prodId) > 0){
+            addToCart({
+                'id': prodId,
+                'name': name,
+                'price': price,
+                'quantity': 1,
+                'imagesrc': $('#foto-grande').attr('src')
+            });
+        }
+        location.href = '/buy/cart';
     }
 }

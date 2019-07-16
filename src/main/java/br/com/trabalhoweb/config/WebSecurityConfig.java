@@ -30,8 +30,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/")
                 .failureUrl("/login?error=bad_credentials").permitAll()
                 .and().logout()
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/home")
                 .and().authorizeRequests()
+                .antMatchers("/home").permitAll()
                 .antMatchers("/category/**").hasAnyRole("ADMIN")
                 .antMatchers("/supplier/**").hasAnyRole("ADMIN")
                 .antMatchers("/purchase/**").hasAnyRole("ADMIN")
@@ -41,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/product/page").hasAnyRole("ADMIN")
                 .antMatchers("/product/save").permitAll()
                 .antMatchers("/user/signin").permitAll()
-
+                .antMatchers("/buy/cart").authenticated()
                 .antMatchers("/**").authenticated()
         ;
     }
@@ -50,7 +51,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-//                .antMatchers("/resources/**");
                 .antMatchers("/css/**")
                 .antMatchers("/js/**")
                 .antMatchers("/images/**")

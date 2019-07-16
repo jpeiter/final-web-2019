@@ -2,6 +2,9 @@ package br.com.trabalhoweb.controller;
 
 import br.com.trabalhoweb.model.ClientPurchase;
 import br.com.trabalhoweb.model.ProductClientPurchase;
+import br.com.trabalhoweb.repository.ClientPurchaseRepository;
+import br.com.trabalhoweb.repository.ProductClientPurchaseRepository;
+import br.com.trabalhoweb.repository.UserRepository;
 import br.com.trabalhoweb.service.*;
 import br.com.trabalhoweb.statics.ShippingPrices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
+import java.security.Principal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("buy")
@@ -25,6 +31,9 @@ public class ClientPurchaseController extends CrudController<ClientPurchase, Lon
 
     @Autowired
     private ClientPurchaseService clientPurchaseService;
+
+    @Autowired
+    private ClientPurchaseRepository clientPurchaseRepository;
 
     @Autowired
     private ProductService productService;
@@ -36,7 +45,11 @@ public class ClientPurchaseController extends CrudController<ClientPurchase, Lon
     private ProductClientPurchaseService productClientPurchaseService;
 
     @Autowired
-    private UserService userService;
+    private ProductClientPurchaseRepository productClientPurchaseRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
 
     @Override
     protected CrudService<ClientPurchase, Long> getService() {
@@ -65,12 +78,12 @@ public class ClientPurchaseController extends CrudController<ClientPurchase, Lon
     }
 
     @PostMapping("save")
-    public ResponseEntity<?> save(@RequestBody @Valid ClientPurchase entity, BindingResult result) {
+    public ResponseEntity<?> save(@RequestBody @Valid ClientPurchase entity, BindingResult result, Principal principal) {
         if (result.hasErrors()) {
             return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
         entity.setDate(LocalDate.now());
-        entity.setUser(userService.findOne(entity.getUser().getId()));
+        entity.setUser(userRepository.findByUsername(principal.getName()));
         entity.setCountry(countryService.findOne(entity.getCountry().getId()));
         entity.setShippingPrice(
                 entity.getCountry().getCode().equals("BRA") ? new BigDecimal(ShippingPrices.BRAZIL) : new BigDecimal(ShippingPrices.OTHERS)
@@ -87,6 +100,27 @@ public class ClientPurchaseController extends CrudController<ClientPurchase, Lon
         }
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("history")
+    public ModelAndView history(Principal principal) {
+        List<ClientPurchase> history =
+                clientPurchaseRepository.findClientPurchaseByUserId(
+                        userRepository.findByUsername(principal.getName()).getId()
+                );
+
+        List<BigDecimal> quantities = new ArrayList<>();
+
+        for (ClientPurchase cp : history){
+            for(ProductClientPurchase pcp : cp.getProductClientPurchases()){
+                quantities.add(pcp.getQuantity());
+            }
+        }
+
+        ModelAndView modelAndView = new ModelAndView(this.getUrl() + "/history");
+        modelAndView.addObject("history", history);
+        modelAndView.addObject("itemsQuantity", quantities);
+        return modelAndView;
     }
 
 }

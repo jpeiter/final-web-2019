@@ -8,16 +8,30 @@ $(document).ready(function () {
 });
 
 
-function getCartQuantity(){
+function getCartQuantity() {
+    let total = 0;
 
     if (localStorage.getItem('cart') !== null) {
         let localCart = JSON.parse(localStorage.getItem('cart'));
 
-        let total = 0;
         localCart.forEach(x => {
             total += x.quantity;
         });
 
-        return total;
     }
+
+    return total;
+}
+
+function getCartQuantityByProductId(productId) {
+    if (localStorage.getItem('cart') !== null) {
+        let localCart = JSON.parse(localStorage.getItem('cart'));
+
+        try {
+            return localCart.filter(product => product.id == productId)[0].quantity;
+        }catch (e) {
+            return 0;
+        }
+    }
+    return 0;
 }
