@@ -43,14 +43,19 @@ INSERT INTO product (name, description, price, category_id, brand_id) VALUES ('P
 INSERT INTO product (name, description, price, category_id, brand_id) VALUES ('Leme de Carvalho', 'Artefato de madeira nobre, cobiçado por arqueólogos e historiadores', 1750.00, 5, 2);
 INSERT INTO product (name, description, price, category_id, brand_id) VALUES ('Bússola de Navegação', 'Instrumento utilizado por marinheiros, dos mais novos aos mais experientes', 400.00, 2, 3);
 
-INSERT INTO "user" (name, username, password) VALUES ('Administrador', 'admin', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
-INSERT INTO "user" (name, username, password) VALUES ('Teste', 'teste', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
+INSERT INTO "user" (name, username, password) VALUES ('Administrador', 'admin', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem'); --123
+INSERT INTO "user" (name, username, password) VALUES ('Teste', 'teste', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem'); --123
+INSERT INTO "user" (name, username, password) VALUES ('jean', 'jean', '$2a$10$Ltf5J3WRHyAtPgcXP1juCe1ObX5SMYZjmwF9WzWBrA/2D9X7oPAAu'); --jean
 
 INSERT INTO "role" (name) VALUES ('ROLE_ADMIN');
 INSERT INTO "role" (name) VALUES ('ROLE_USER');
 
 INSERT INTO user_roles (user_id, roles_id) VALUES (1, 1);
 INSERT INTO user_roles (user_id, roles_id) VALUES (2, 2);
+INSERT INTO user_roles (user_id, roles_id) VALUES (3, 2);
 
 INSERT INTO purchase (date, supplier_id, user_id) VALUES ('2019-06-11', 1, 1);
 INSERT INTO product_purchase (quantity, total_price, product_id, purchase_id) VALUES (2, 100000, 1, 1);
+
+INSERT INTO client_purchase(date, shipping_price, country_id, user_id) VALUES ('2019-07-16', 0.0, 2, 3);
+INSERT INTO products_client_purchase(quantity, total_price, client_purchase_id, product_id) VALUES (5, 2000.0, 1, 3);

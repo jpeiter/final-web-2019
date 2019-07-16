@@ -29,7 +29,7 @@ public class ProductClientPurchase implements Serializable {
     private Long id;
 
     @Column(name = "quantity", nullable = false)
-    private BigDecimal  quantity;
+    private BigDecimal quantity;
 
     @Column(name = "total_price", nullable = false)
     private BigDecimal totalPrice;
@@ -40,6 +40,10 @@ public class ProductClientPurchase implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "clientPurchase_id", referencedColumnName = "id")
-    @JsonIgnore
     private ClientPurchase clientPurchase;
+
+    @JsonIgnore
+    public ClientPurchase getClientPurchase() {
+        return clientPurchase;
+    }
 }

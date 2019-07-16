@@ -91,7 +91,8 @@ public class User implements Serializable, UserDetails {
     }
 
     public String getEncodedPassword(String password) {
-        return ENCODER.encode(password);
+        String senha = ENCODER.encode(password);
+        return senha;
     }
 
 }

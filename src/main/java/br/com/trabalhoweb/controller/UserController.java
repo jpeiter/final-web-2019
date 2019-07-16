@@ -42,6 +42,7 @@ public class UserController extends CrudController<User, Long> {
     @Autowired
     private RoleRepository roleRepository;
 
+
     @Override
     protected CrudService<User, Long> getService() {
         return this.userService;
@@ -83,16 +84,15 @@ public class UserController extends CrudController<User, Long> {
             return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
 
-        if (entity.getId() != null) {
-            if (!userService.findOne(entity.getId()).getPassword().equals(entity.getPassword()) || entity.getPassword() != null) {
-                entity.setPassword(
-                        entity.getEncodedPassword(
-                                entity.getPassword()
-                        )
-                );
-            }
+        User user;
+        try {
+             user = validatePassword(entity);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        getService().save(entity);
+
+
+        getService().save(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -136,4 +136,35 @@ public class UserController extends CrudController<User, Long> {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    /*
+     *Saves a new password if given, or else, saves the original.
+     * */
+    private User validatePassword(User entity) throws Exception {
+        if (entity.getId() != null) {
+            if (entity.getPassword().length() > 0 && userService.findOne(entity.getId()).getPassword() != null) {
+                entity.setPassword(
+                        userService.findOne(entity.getId())
+                                .getEncodedPassword(
+                                        entity.getPassword()
+                                )
+                );
+            } else {
+                throw new Exception();
+            }
+        } else {
+            if (entity.getPassword().length() > 0) {
+                entity.setPassword(
+                        entity.getEncodedPassword(
+                                entity.getPassword()
+                        )
+                );
+            } else {
+                throw new Exception();
+            }
+        }
+        return entity;
+    }
+
+
 }
